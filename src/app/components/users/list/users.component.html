@@ -1,0 +1,7 @@
+<div class="container">
+  <div *ngFor="let user of list_users$ | async as User">
+    <ul>
+      <li>{{user.name}}</li>
+    </ul>
+  </div>
+</div>
