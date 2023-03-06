@@ -328,5 +328,23 @@
       "password": "2107",
       "role": "user"
     }
+  ],
+
+  "drhs": [
+    {
+      "date": "21/03/2023",
+      "order": 1,
+      "period": "2023/2024",
+      "registration": "564"
+    }
+  ],
+
+  "tres": [
+    {
+      "date": "21/03/2023",
+      "order": 1,
+      "year": "2022",
+      "registration": "564"
+    }
   ]
 }

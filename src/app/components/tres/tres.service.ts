@@ -5,9 +5,9 @@ import { environment } from 'src/environment/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
-export class DrhsService {
+export class TresService {
 
-  private readonly API = `${environment.apiUrl}/drhs`;
+  private readonly API = `${environment.apiUrl}/tres`;
 
   constructor(private http: HttpClient) { }
 }

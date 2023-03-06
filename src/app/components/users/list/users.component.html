@@ -1,7 +1,34 @@
-<div class="container">
-  <div *ngFor="let user of list_users$ | async as User">
-    <ul>
-      <li>{{user.name}}</li>
-    </ul>
+<mat-card id="user-list">
+  <mat-card-header>
+    <mat-toolbar color="primary">LISTA DE USUÁRIOS</mat-toolbar>
+  </mat-card-header>
+  <mat-card-content>
+    <div id="altura">
+    <table mat-table  [dataSource]="list" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef>Mat.</th>
+        <td mat-cell *matCellDef="let user">{{ user.user }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="password">
+        <th mat-header-cell *matHeaderCellDef>Senha</th>
+        <td mat-cell *matCellDef="let user">{{ user.password }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let user">{{ user.role }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
   </div>
-</div>
+  </mat-card-content>
+</mat-card>

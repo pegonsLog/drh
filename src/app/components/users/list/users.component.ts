@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { User } from 'src/app/shared/model/user';
 import { UsersService } from '../users.service';
 
@@ -8,15 +8,23 @@ import { UsersService } from '../users.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
-export class UsersComponent implements OnInit {
-  list_users$: Observable<User[]>;
+export class UsersComponent implements OnInit, OnDestroy {
+  // list_users$: Observable<User[]>;
+  list: User[] = [];
+
+  displayedColumns: string[] = ['user', 'name', 'password', 'role'];
+  dataSource = this.list;
+
+  subscription = new Subscription();
 
   constructor(private usersService: UsersService) {
-    this.list_users$ = this.usersService.list();
+    this.usersService.list().subscribe((users: any) => this.list = users);
   }
 
   ngOnInit(){
-// console.log(this.list_users$);
+  }
+  ngOnDestroy(){
+    this.subscription.unsubscribe;
   }
 
 
