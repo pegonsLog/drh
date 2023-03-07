@@ -332,19 +332,19 @@
 
   "drhs": [
     {
-      "date": "21/03/2023",
       "order": 1,
+      "registration": "564",
       "period": "2023/2024",
-      "registration": "564"
+      "date": "21/03/2023"
     }
   ],
 
   "tres": [
     {
-      "date": "21/03/2023",
       "order": 1,
+      "registration": "564",
       "year": "2022",
-      "registration": "564"
+      "date": "21/03/2023"
     }
   ]
 }

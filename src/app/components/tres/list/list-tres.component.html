@@ -1,0 +1,36 @@
+<mat-card id="tres-list">
+  <mat-card-header>
+    <mat-toolbar color="primary">LISTA DE TREs</mat-toolbar>
+  </mat-card-header>
+  <mat-card-content>
+    <div id="altura">
+    <table mat-table [dataSource]="list" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="order">
+        <th mat-header-cell *matHeaderCellDef>Nº</th>
+        <td mat-cell *matCellDef="let tre">{{ tre.order }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="registration">
+        <th mat-header-cell *matHeaderCellDef>Matrícula</th>
+        <td mat-cell *matCellDef="let tre">{{ tre.registration }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef>Ano da Eleição</th>
+        <td mat-cell *matCellDef="let tre">{{ tre.year }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Data do TRE</th>
+        <td mat-cell *matCellDef="let tre">{{ tre.date }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  </mat-card-content>
+</mat-card>
+
+

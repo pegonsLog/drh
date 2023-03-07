@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './components/login/login.module';
 import { UsersModule } from './components/users/users.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DrhsModule } from './components/drhs/drhs.module';
+import { TresModule } from './components/tres/tres.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AngularMaterialModule,
     LoginModule,
     UsersModule,
+    DrhsModule,
+    TresModule,
     HttpClientModule
   ],
   providers: [],

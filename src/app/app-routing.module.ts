@@ -20,6 +20,13 @@ const routes: Routes = [
         (m) => m.DrhsModule
       ),
   },
+  {
+    path: 'tres',
+    loadChildren: () =>
+      import('src/app/components/tres/tres.module').then(
+        (m) => m.TresModule
+      ),
+  },
 ];
 
 @NgModule({

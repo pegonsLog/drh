@@ -1,13 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environment/environment.prod';
+import { Observable } from 'rxjs';
+import { Tre } from 'src/app/shared/model/tre';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TresService {
 
-  private readonly API = `${environment.apiUrl}/tres`;
+  private readonly API = "http://localhost:3000/tres";
 
   constructor(private http: HttpClient) { }
+
+  list(): Observable<Tre[]>{
+    return this.http.get<Tre[]>(this.API);
+  }
 }
