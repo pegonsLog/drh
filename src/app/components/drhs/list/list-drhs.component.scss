@@ -1,6 +1,18 @@
+@media (mix-width: 600px) {
+  mat-card {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 600px) and (max-width: 2000px) {
+  mat-card {
+    width: 40%;
+    margin: 0 auto;
+  }
+}
+
 #drhs-list {
   width: 40%;
-  height: 700px;
   margin: 0 auto;
 }
 
@@ -12,4 +24,8 @@
 * {
   font-family: Montserrat;
   font-weight: 300;
+}
+
+table {
+  padding: 10px;
 }

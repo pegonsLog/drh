@@ -336,12 +336,50 @@
       "registration": "564",
       "period": "2023/2024",
       "date": "21/03/2023"
+    },
+    {
+      "order": 2,
+      "registration": "564",
+      "period": "2023/2024",
+      "date": "21/03/2023"
+    },
+    {
+      "order": 3,
+      "registration": "564",
+      "period": "2023/2024",
+      "date": "Disponível"
+    },
+    {
+      "order": 1,
+      "registration": "410",
+      "period": "2023/2024",
+      "date": "21/03/2023"
     }
+
+
   ],
 
   "tres": [
     {
       "order": 1,
+      "registration": "564",
+      "year": "2022",
+      "date": "21/03/2023"
+    },
+    {
+      "order": 2,
+      "registration": "564",
+      "year": "2022",
+      "date": "21/03/2023"
+    },
+    {
+      "order": 3,
+      "registration": "564",
+      "year": "2022",
+      "date": "21/03/2023"
+    },
+    {
+      "order": 4,
       "registration": "564",
       "year": "2022",
       "date": "21/03/2023"

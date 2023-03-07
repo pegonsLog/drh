@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <mat-toolbar color="primary" id="peso-fonte">LOGIN</mat-toolbar>
+    <mat-toolbar color="primary" id="peso-fonte">CONSULTA DE DRH E TRE</mat-toolbar>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field class="full-width">
         <input matInput placeholder="Usuário" formControlName="user" />
@@ -11,21 +11,17 @@
       </mat-form-field>
 
       <mat-card-actions>
+        <button id="button-drh" type="submit" mat-raised-button>DRH</button>
         <button
+          id="button-tre"
           type="submit"
           mat-raised-button
-          class="montserrat"
-          color="primary"
+          color="accent"
         >
-          Entrar
+          TRE
         </button>
-            
-        <button
-          type="button"
-          mat-raised-button
-          class="montserrat"
-          (click)="clear()"
-        >
+
+        <button type="button" mat-raised-button (click)="clear()">
           Limpar
         </button>
       </mat-card-actions>

@@ -1,17 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/model/user';
 import { LoginService } from './login.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   form: FormGroup;
-  userAuth: string = '';
+  userAuth: User = {
+    id: 0,
+    user: '',
+    name: '',
+    password: '',
+    role: '',
+  };
+
+  users: User[] = [];
+  subscription = new Subscription();
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
@@ -20,21 +31,29 @@ export class LoginComponent {
     private loginService: LoginService
   ) {
     this.form = this.formBuilder.group({
-      user: ['2023'],
-      password: ['2023'],
+      user: [''],
+      password: [''],
     });
+
+    this.loginService.list().subscribe((users: User[]) => (this.users = users));
   }
 
   onSubmit() {
-    this.userAuth = this.loginService.userAuth(this.form.value);
-    if (this.userAuth === 'user') {
-      this.router.navigate(['/users']);
+    const userAuth = this.form.value;
+    for (let user of this.users) {
+      if (user.user === userAuth.user && user.password === userAuth.password) {
+        this.userAuth = user;
+      }
     }
-    if (this.userAuth === 'adm') {
-      this.router.navigate(['/users']);
-    }
-    if (this.userAuth === '') {
-      this.onError();
+    if (this.userAuth.name) {
+      this.router.navigate(['/drhs'], {
+        queryParams: { user: userAuth.user },
+      });
+
+    } else {
+      alert('Usuário não cadastrado!');
+      return;
+
     }
   }
 
@@ -49,4 +68,9 @@ export class LoginComponent {
       horizontalPosition: 'center',
     });
   }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe;
+  }
+
 }
