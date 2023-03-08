@@ -12,7 +12,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnDestroy {
-  form: FormGroup;
+  // form: FormGroup;
+
+  user: string = '';
+  password: string = '';
   userAuth: User = {
     id: 0,
     user: '',
@@ -30,35 +33,39 @@ export class LoginComponent implements OnDestroy {
     private router: Router,
     private loginService: LoginService
   ) {
-    this.form = this.formBuilder.group({
-      user: [''],
-      password: [''],
-    });
+    // this.form = this.formBuilder.group({
+    //   user: [''],
+    //   password: [''],
+    // });
 
     this.loginService.list().subscribe((users: User[]) => (this.users = users));
   }
 
-  onSubmit() {
-    const userAuth = this.form.value;
+  onSubmit(type: string) {
     for (let user of this.users) {
-      if (user.user === userAuth.user && user.password === userAuth.password) {
+      if (user.user === this.user && user.password === this.password) {
         this.userAuth = user;
       }
     }
-    if (this.userAuth.name) {
-      this.router.navigate(['/drhs'], {
-        queryParams: { user: userAuth.user },
-      });
 
-    } else {
+    if (!this.userAuth.name) {
       alert('Usuário não cadastrado!');
       return;
-
+    }
+    if (this.userAuth && type === 'drh') {
+      this.router.navigate(['/drhs'], {
+        queryParams: { user: this.user },
+      });
+    }
+    if (this.userAuth && type === 'tre') {
+      this.router.navigate(['/tres'], {
+        queryParams: { user: this.user },
+      });
     }
   }
-
   clear() {
-    this.form.setValue({ user: '', password: '' });
+    this.user = '';
+    this.password = '';
   }
 
   onError() {
@@ -72,5 +79,4 @@ export class LoginComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe;
   }
-
 }
