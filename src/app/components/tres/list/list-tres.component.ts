@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, Subscription } from 'rxjs';
 import { Tre } from 'src/app/shared/model/tre';
 import { TresService } from '../tres.service';
@@ -20,17 +20,21 @@ export class ListTresComponent {
 
   subscription = new Subscription();
 
-  constructor(private tresService: TresService, private route: ActivatedRoute) {
+  constructor(private tresService: TresService, private route: ActivatedRoute, private router: Router) {
     this.matricula = this.route.snapshot.queryParams['user'];
 
     this.tresService
       .list()
       .pipe(
         map((drhs: Tre[]) =>
-          drhs.filter((drh: any) => drh.registration === this.matricula)
+        drhs.filter((drh: any) => drh.registration === this.matricula)
         )
-      )
+        )
       .subscribe((drhs: any) => (this.list = drhs));
+  }
+
+  voltar() {
+    this.router.navigate(['/'])
   }
 
   ngOnInit() {}

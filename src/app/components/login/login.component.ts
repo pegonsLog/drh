@@ -64,8 +64,8 @@ export class LoginComponent implements OnDestroy {
     }
   }
   clear() {
-    this.user = '';
-    this.password = '';
+    this.user = '564';
+    this.password = '564';
   }
 
   onError() {
