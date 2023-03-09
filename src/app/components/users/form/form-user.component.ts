@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DrhsService } from '../drhs.service';
+import { UsersService } from '../users.service';
 
 @Component({
-  selector: 'app-form-drh',
-  templateUrl: './form-drh.component.html',
-  styleUrls: ['./form-drh.component.scss'],
+  selector: 'app-form-user',
+  templateUrl: './form-user.component.html',
+  styleUrls: ['./form-user.component.scss']
 })
-export class FormDrhComponent {
+export class FormUserComponent {
+
   constructor(
-    private drhsService: DrhsService,
+    private usersService: UsersService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -19,4 +20,5 @@ export class FormDrhComponent {
   voltar() {
     this.router.navigate(['/']);
   }
+
 }

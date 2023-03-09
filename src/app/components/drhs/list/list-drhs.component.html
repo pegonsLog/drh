@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-toolbar id="toolbar" color="primary"
       >DRHs - Mat.: {{ matricula }}
-
+      <mat-icon id="peso" fontSet="material-icons-outlined">settings</mat-icon>
       <span *ngIf="role === 'adm'">
         <button style="font-size: 10px" mat-button (click)="onSave(matricula)">
           Adicionar

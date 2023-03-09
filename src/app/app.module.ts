@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DrhsModule } from './components/drhs/drhs.module';
 import { TresModule } from './components/tres/tres.module';
 
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -22,7 +24,7 @@ import { TresModule } from './components/tres/tres.module';
     UsersModule,
     DrhsModule,
     TresModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

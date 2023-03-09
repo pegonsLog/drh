@@ -1,1 +1,33 @@
-<p>form TRE works!</p>
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar color="primary" id="peso-fonte"
+      >ADICIONAR TRE</mat-toolbar
+    >
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Matrícula" name="registration"/>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Ano da eleição" name="year" mask="9999"/>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Data do uso" name="date" mask="d0/M0/0000"/>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button
+          id="button-salvar"
+          (click)="onSubmit()"
+          name="user"
+          mat-raised-button
+        >
+         Salvar
+        </button>
+        <button type="button" mat-raised-button (click)="voltar()">
+          Cancelar
+        </button>
+      </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
+

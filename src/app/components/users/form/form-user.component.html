@@ -1,22 +1,25 @@
 <mat-card>
   <mat-card-content>
     <mat-toolbar color="primary" id="peso-fonte"
-      >ADICIONAR DRH</mat-toolbar
+      >ADICIONAR USUÁRIO</mat-toolbar
     >
 
       <mat-form-field class="full-width">
-        <input matInput placeholder="Matrícula" name="registration"/>
+        <input matInput placeholder="Usuário" name="user"/>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Período" name="period" mask="9999/9999"/>
+        <input matInput placeholder="Nome" name="name"/>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Data do uso" name="date" mask="d0/M0/0000"/>
+        <input matInput placeholder="Senha" name="password"/>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="status" name="role"/>
       </mat-form-field>
 
       <mat-card-actions>
         <button
-          id="button-drh"
+          id="button-salvar"
           (click)="onSubmit()"
           name="user"
           mat-raised-button
@@ -29,4 +32,3 @@
       </mat-card-actions>
   </mat-card-content>
 </mat-card>
-

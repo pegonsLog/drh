@@ -44,7 +44,9 @@ export class ListDrhsComponent {
   }
 
   onUsers() {
-    this.router.navigate(['users/']);
+    this.router.navigate(['users/'], {
+      queryParams: { role: this.role },
+    });
   }
 
   ngOnInit() {}

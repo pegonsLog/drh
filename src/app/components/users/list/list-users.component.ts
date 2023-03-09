@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/shared/model/user';
 import { UsersService } from '../users.service';
@@ -13,11 +14,25 @@ export class ListUsersComponent implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['user', 'name', 'password', 'role'];
   dataSource = this.list;
+  role: string;
 
   subscription = new Subscription();
 
-  constructor(private usersService: UsersService) {
+  constructor(
+    private usersService: UsersService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.usersService.list().subscribe((users: any) => (this.list = users));
+    this.role = this.route.snapshot.queryParams['role'];
+  }
+
+  onSave() {
+    this.router.navigate(['users/new']);
+  }
+
+  voltar() {
+    this.router.navigate(['/']);
   }
 
   ngOnInit() {}
