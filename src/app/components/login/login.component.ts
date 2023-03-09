@@ -54,12 +54,12 @@ export class LoginComponent implements OnDestroy {
     }
     if (this.userAuth && type === 'drh') {
       this.router.navigate(['/drhs'], {
-        queryParams: { user: this.user },
+        queryParams: { user: this.user, role: this.userAuth.role},
       });
     }
     if (this.userAuth && type === 'tre') {
       this.router.navigate(['/tres'], {
-        queryParams: { user: this.user },
+        queryParams: { user: this.user, role: this.userAuth.role },
       });
     }
   }

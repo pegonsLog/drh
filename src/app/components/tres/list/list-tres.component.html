@@ -1,6 +1,16 @@
 <mat-card>
   <mat-card-header>
-    <mat-toolbar color="primary">LISTA DE TREs - Mat.: {{ matricula }}</mat-toolbar>
+    <mat-toolbar id="toolbar" color="primary"
+      >LISTA DE TREs - Mat.: {{ matricula }}
+      <span *ngIf="role === 'adm'">
+        <button style="font-size: 10px" mat-button (click)="onSave(matricula)">
+          Adicionar
+        </button>
+        <button style="font-size: 10px" mat-button (click)="onUsers()">
+          Usuários
+        </button>
+      </span>
+    </mat-toolbar>
   </mat-card-header>
   <mat-card-content>
     <div id="altura">

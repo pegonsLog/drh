@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Subscription, tap } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { Drh } from 'src/app/shared/model/drh';
-import { User } from 'src/app/shared/model/user';
 import { DrhsService } from '../drhs.service';
 
 @Component({
@@ -12,10 +11,8 @@ import { DrhsService } from '../drhs.service';
 })
 export class ListDrhsComponent {
   list: Drh[] = [];
-
   matricula: string;
-  adm: User[] = [];
-
+  role: string;
   displayedColumns: string[] = ['order', 'registration', 'period', 'date'];
   dataSource = this.list;
 
@@ -27,12 +24,9 @@ export class ListDrhsComponent {
     private router: Router
   ) {
     this.matricula = this.route.snapshot.queryParams['user'];
+    this.role = this.route.snapshot.queryParams['role'];
 
     this.subscription = this.drhsService
-      .findAdm()
-      .subscribe((adm: User[]) => (this.adm = adm));
-
-    this.drhsService
       .list()
       .pipe(
         map((drhs: Drh[]) =>
@@ -43,6 +37,14 @@ export class ListDrhsComponent {
   }
   voltar() {
     this.router.navigate(['/']);
+  }
+
+  onSave(matricula: string) {
+    this.router.navigate(['drhs/new']);
+  }
+
+  onUsers() {
+    this.router.navigate(['users/']);
   }
 
   ngOnInit() {}

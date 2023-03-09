@@ -2,9 +2,15 @@
   <mat-card-header>
     <mat-toolbar id="toolbar" color="primary"
       >DRHs - Mat.: {{ matricula }}
-      <span *ngIf="adm">
-        settings
-        </span>
+
+      <span *ngIf="role === 'adm'">
+        <button style="font-size: 10px" mat-button (click)="onSave(matricula)">
+          Adicionar
+        </button>
+        <button style="font-size: 10px" mat-button (click)="onUsers()">
+Usuários
+        </button>
+      </span>
     </mat-toolbar>
   </mat-card-header>
   <mat-card-content>

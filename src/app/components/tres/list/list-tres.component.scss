@@ -18,7 +18,7 @@
 
 #altura {
   overflow-y: auto;
-  height: 590px;
+  height: 450px;
 }
 
 * {
@@ -28,4 +28,8 @@
 
 table {
   padding: 10px;
+}
+#toolbar{
+  display: flex;
+  justify-content: space-between;
 }

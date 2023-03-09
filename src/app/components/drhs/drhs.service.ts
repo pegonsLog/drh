@@ -8,21 +8,11 @@ import { User } from 'src/app/shared/model/user';
   providedIn: 'root',
 })
 export class DrhsService {
-  private readonly APIDRH = 'http://localhost:3000/drhs';
-  private readonly APIUSERS = 'http://localhost:3000/users';
+  private readonly API = 'http://localhost:3000/drhs';
 
   constructor(private http: HttpClient) {}
 
   list(): Observable<Drh[]> {
-    return this.http.get<Drh[]>(this.APIDRH);
-  }
-
-  findAdm(): Observable<User[]> {
-    return this.http
-      .get<User[]>(this.APIUSERS)
-      .pipe(
-        first(),
-        map((users: User[]) => users.filter((user: User) => user.role ==='adm'))
-      );
+    return this.http.get<Drh[]>(this.API);
   }
 }

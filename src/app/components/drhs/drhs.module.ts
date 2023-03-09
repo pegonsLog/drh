@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { AngularMaterialModule } from '../../shared/angular-material/angular-material.module';
 import { ListDrhsComponent } from './list/list-drhs.component';
 import { DrhsRoutingModule } from './drhs-routing.module';
-import { FormComponent } from './form/form.component';
+import { FormDrhComponent } from './form/form-drh.component';
 
 @NgModule({
-  declarations: [FormComponent, ListDrhsComponent],
+  declarations: [FormDrhComponent, ListDrhsComponent],
   imports: [CommonModule, DrhsRoutingModule, AngularMaterialModule],
-  exports: [FormComponent, ListDrhsComponent],
+  exports: [FormDrhComponent, ListDrhsComponent],
 })
 export class DrhsModule {}

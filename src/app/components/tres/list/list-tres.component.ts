@@ -14,6 +14,7 @@ export class ListTresComponent {
   list: Tre[] = [];
 
   matricula: string;
+  role: string;
 
   displayedColumns: string[] = ['order', 'registration', 'year', 'date'];
   dataSource = this.list;
@@ -22,6 +23,7 @@ export class ListTresComponent {
 
   constructor(private tresService: TresService, private route: ActivatedRoute, private router: Router) {
     this.matricula = this.route.snapshot.queryParams['user'];
+    this.role = this.route.snapshot.queryParams['role'];
 
     this.tresService
       .list()
@@ -35,6 +37,14 @@ export class ListTresComponent {
 
   voltar() {
     this.router.navigate(['/'])
+  }
+
+  onSave(matricula: string) {
+    this.router.navigate(['tres/new']);
+  }
+
+  onUsers() {
+    this.router.navigate(['users/']);
   }
 
   ngOnInit() {}
