@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { User } from 'src/app/shared/model/user';
-import { LoginService } from './login.service';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/shared/model/user';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +12,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnDestroy {
-  // form: FormGroup;
 
   user: string = '';
   password: string = '';
   userAuth: User = {
-    id: 0,
     user: '',
     name: '',
     password: '',
@@ -31,38 +29,15 @@ export class LoginComponent implements OnDestroy {
     private formBuilder: NonNullableFormBuilder,
     private snackBar: MatSnackBar,
     private router: Router,
-    private loginService: LoginService
+    private loginService: AuthService
   ) {
-    // this.form = this.formBuilder.group({
-    //   user: [''],
-    //   password: [''],
-    // });
-
     this.loginService.list().subscribe((users: User[]) => (this.users = users));
   }
 
   onSubmit(type: string) {
-    for (let user of this.users) {
-      if (user.user === this.user && user.password === this.password) {
-        this.userAuth = user;
-      }
-    }
-
-    if (!this.userAuth.name) {
-      alert('Usuário não cadastrado!');
-      return;
-    }
-    if (this.userAuth && type === 'drh') {
-      this.router.navigate(['/drhs'], {
-        queryParams: { user: this.user, role: this.userAuth.role},
-      });
-    }
-    if (this.userAuth && type === 'tre') {
-      this.router.navigate(['/tres'], {
-        queryParams: { user: this.user, role: this.userAuth.role },
-      });
-    }
+    this.loginService.doLogin(this.user, this.password, type);
   }
+
   clear() {
     this.user = '564';
     this.password = '564';

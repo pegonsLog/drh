@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormTreComponent } from './form/form-tre.component';
-import { ListTresComponent } from './list/list-tres.component';
+import { ListAdmTresComponent} from './list-adm/list-adm-tres.component';
+import { ListUserTresComponent } from './list-user/list-user-tres.component';
 
 const routes: Routes = [
-  {path: '', component: ListTresComponent},
+  {path: '', component: ListUserTresComponent},
+  {path: 'adm', component: ListAdmTresComponent},
   {path: 'new', component: FormTreComponent},
   {path: 'edit', component: FormTreComponent}
 ];

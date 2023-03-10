@@ -2,12 +2,12 @@
   <mat-card-header>
     <mat-toolbar id="toolbar" color="primary"
       >LISTA DE TREs - Mat.: {{ matricula }}
-      <span *ngIf="role === 'adm'">
-        <button style="font-size: 10px" mat-button (click)="onSave(matricula)">
-          Adicionar
+      <span id="buttons">
+        <button (click)="onSave(matricula)" id="mat-button-custom-adm">
+          <mat-icon class="new" fontSet="material-icons-round">add</mat-icon>
         </button>
-        <button style="font-size: 10px" mat-button (click)="onUsers()">
-          Usuários
+        <button  (click)="onUsers()" id="mat-button-custom-adm">
+          <mat-icon class="new" fontSet="material-icons-round">person</mat-icon>
         </button>
       </span>
     </mat-toolbar>

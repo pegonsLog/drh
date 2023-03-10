@@ -5,25 +5,23 @@ import { Tre } from 'src/app/shared/model/tre';
 import { TresService } from '../tres.service';
 
 @Component({
-  selector: 'app-list-tres',
-  templateUrl: './list-tres.component.html',
-  styleUrls: ['./list-tres.component.scss']
+  selector: 'app-list-user-tres',
+  templateUrl: './list-user-tres.component.html',
+  styleUrls: ['./list-user-tres.component.scss']
 })
-export class ListTresComponent {
+export class ListUserTresComponent {
 
   list: Tre[] = [];
 
   matricula: string;
-  role: string;
 
-  displayedColumns: string[] = ['registration', 'year', 'date', 'actions'];
+  displayedColumns: string[] = ['registration', 'year', 'date'];
   dataSource = this.list;
 
   subscription = new Subscription();
 
   constructor(private tresService: TresService, private route: ActivatedRoute, private router: Router) {
     this.matricula = this.route.snapshot.queryParams['user'];
-    this.role = this.route.snapshot.queryParams['role'];
 
     this.tresService
       .list()
@@ -37,21 +35,6 @@ export class ListTresComponent {
 
       voltar() {
         this.router.navigate(['/'])
-  }
-
-  onSave(matricula: string) {
-    this.router.navigate(['tres/new']);
-  }
-
-  onUsers() {
-    this.router.navigate(['users/']);
-  }
-
-  edit() {
-    console.log('Edit');
-  }
-  delete() {
-    console.log('Delete');
   }
 
   ngOnInit() {}

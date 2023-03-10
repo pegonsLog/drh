@@ -5,11 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule } from './components/login/login.module';
-import { UsersModule } from './components/users/users.module';
+import { LoginModule } from './login/login.module';
+import { UsersModule } from './users/users.module';
 import { HttpClientModule } from '@angular/common/http';
-import { DrhsModule } from './components/drhs/drhs.module';
-import { TresModule } from './components/tres/tres.module';
+import { DrhsModule } from './drhs/drhs.module';
+import { TresModule } from './tres/tres.module';
 
 
 

@@ -43,6 +43,14 @@ table {
   display: flex;
   align-items: center;
 }
+
+.new{
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
 #edit {
   cursor: pointer;
   color: rgb(5, 167, 5);
@@ -57,5 +65,11 @@ table {
 #mat-button-custom {
   border: 0px;
   background-color: white;
+}
+#mat-button-custom-adm {
+  display: flex;
+  align-items: center;
+  border: 0px;
+  background-color: rgba(0, 0, 0, 0);
 }
 

@@ -5,15 +5,14 @@ import { Drh } from 'src/app/shared/model/drh';
 import { DrhsService } from '../drhs.service';
 
 @Component({
-  selector: 'app-list-drhs',
-  templateUrl: './list-drhs.component.html',
-  styleUrls: ['./list-drhs.component.scss'],
+  selector: 'app-list-user-drhs',
+  templateUrl: './list-user-drhs.component.html',
+  styleUrls: ['./list-user-drhs.component.scss'],
 })
-export class ListDrhsComponent {
+export class ListUsersDrhsComponent {
   list: Drh[] = [];
   matricula: string;
-  role: string;
-  displayedColumns: string[] = ['registration', 'period', 'date', 'actions'];
+  displayedColumns: string[] = ['registration', 'period', 'date'];
   dataSource = this.list;
 
   subscription = new Subscription();
@@ -24,7 +23,6 @@ export class ListDrhsComponent {
     private router: Router
   ) {
     this.matricula = this.route.snapshot.queryParams['user'];
-    this.role = this.route.snapshot.queryParams['role'];
 
     this.subscription = this.drhsService
       .list()
@@ -37,23 +35,6 @@ export class ListDrhsComponent {
   }
   voltar() {
     this.router.navigate(['/']);
-  }
-
-  onSave(matricula: string) {
-    this.router.navigate(['drhs/new']);
-  }
-
-  onUsers() {
-    this.router.navigate(['users/'], {
-      queryParams: { role: this.role },
-    });
-  }
-
-  edit() {
-    console.log('Edit');
-  }
-  delete() {
-    console.log('Delete');
   }
 
   ngOnInit() {}
