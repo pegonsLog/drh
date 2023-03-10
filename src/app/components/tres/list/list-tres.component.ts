@@ -16,7 +16,7 @@ export class ListTresComponent {
   matricula: string;
   role: string;
 
-  displayedColumns: string[] = ['order', 'registration', 'year', 'date'];
+  displayedColumns: string[] = ['registration', 'year', 'date', 'actions'];
   dataSource = this.list;
 
   subscription = new Subscription();
@@ -32,11 +32,11 @@ export class ListTresComponent {
         drhs.filter((drh: any) => drh.registration === this.matricula)
         )
         )
-      .subscribe((drhs: any) => (this.list = drhs));
-  }
+        .subscribe((drhs: any) => (this.list = drhs));
+      }
 
-  voltar() {
-    this.router.navigate(['/'])
+      voltar() {
+        this.router.navigate(['/'])
   }
 
   onSave(matricula: string) {
@@ -47,8 +47,16 @@ export class ListTresComponent {
     this.router.navigate(['users/']);
   }
 
+  edit() {
+    console.log('Edit');
+  }
+  delete() {
+    console.log('Delete');
+  }
+
   ngOnInit() {}
   ngOnDestroy() {
     this.subscription.unsubscribe;
   }
 }
+

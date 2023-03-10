@@ -13,7 +13,7 @@ export class ListDrhsComponent {
   list: Drh[] = [];
   matricula: string;
   role: string;
-  displayedColumns: string[] = ['order', 'registration', 'period', 'date'];
+  displayedColumns: string[] = ['registration', 'period', 'date', 'actions'];
   dataSource = this.list;
 
   subscription = new Subscription();
@@ -47,6 +47,13 @@ export class ListDrhsComponent {
     this.router.navigate(['users/'], {
       queryParams: { role: this.role },
     });
+  }
+
+  edit() {
+    console.log('Edit');
+  }
+  delete() {
+    console.log('Delete');
   }
 
   ngOnInit() {}

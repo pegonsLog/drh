@@ -1,3 +1,5 @@
+@import 'material-icons/iconfont/material-icons.css';
+
 @media (mix-width: 600px) {
   mat-card {
     width: 100%;
@@ -18,7 +20,7 @@
 
 #altura {
   overflow-y: auto;
-  height: 590px;
+  height: 450px;
 }
 
 * {
@@ -29,7 +31,31 @@
 table {
   padding: 10px;
 }
+
 #toolbar{
   display: flex;
   justify-content: space-between;
 }
+
+#delete {
+  cursor: pointer;
+  color: rgb(255, 71, 71);
+  display: flex;
+  align-items: center;
+}
+#edit {
+  cursor: pointer;
+  color: rgb(5, 167, 5);
+  display: flex;
+  align-items: center;
+}
+#actions {
+  display: flex;
+  justify-content: center;
+}
+
+#mat-button-custom {
+  border: 0px;
+  background-color: white;
+}
+

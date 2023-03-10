@@ -12,7 +12,7 @@ import { UsersService } from '../users.service';
 export class ListUsersComponent implements OnInit, OnDestroy {
   list: User[] = [];
 
-  displayedColumns: string[] = ['user', 'name', 'password', 'role'];
+  displayedColumns: string[] = ['user', 'name', 'password', 'role', 'actions'];
   dataSource = this.list;
   role: string;
 
@@ -33,6 +33,13 @@ export class ListUsersComponent implements OnInit, OnDestroy {
 
   voltar() {
     this.router.navigate(['/']);
+  }
+
+  edit() {
+    console.log('Edit');
+  }
+  delete() {
+    console.log('Delete');
   }
 
   ngOnInit() {}
