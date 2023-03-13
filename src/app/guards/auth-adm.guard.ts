@@ -25,7 +25,11 @@ export class AuthAdmGuard implements CanActivate {
       this.router.navigate(['/drhs/adm']);
       return true;
     }
-    this.router.navigateByUrl('https://www.google.com');
+    if (this.authService.isAuthenticatedAdmTre()) {
+      this.router.navigate(['/tres/adm']);
+      return true;
+    }
+    this.router.navigate(['/']);
     return false;
   }
 }

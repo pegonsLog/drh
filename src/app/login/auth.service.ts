@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, first, of, map, Subscription } from 'rxjs';
 import { User } from 'src/app/shared/model/user';
 import { Router } from '@angular/router';
 
@@ -16,46 +16,50 @@ export class AuthService {
   private userAuthenticatedTre: boolean = false;
   private admAuthenticatedTre: boolean = false;
   role: string = '';
+  user: User = {
+    user: '',
+    name: '',
+    password: '',
+    role: '',
+  };
 
   constructor(private http: HttpClient, private router: Router) {}
 
   list(): Observable<User[]> {
-    return this.http.get<User[]>(this.API);
+    return this.http.get<User[]>(this.API).pipe(first());
   }
 
-  doLoginDrh(user: string, password: string) {
-    for (let usr of this.users) {
-      if (usr.user === user && usr.password === password) {
-        this.role = usr.role;
-      }
-    }
-
-    if (this.role === 'user') {
+  doLoginDrh(user: string, role: string) {
+    if (role === 'user') {
       this.userAuthenticatedDrh = true;
-      this.router.navigate(['/drhs/user']);
+      this.router.navigate(['drhs/user'], {
+        queryParams: { user: user, role: role },
+      });
     }
 
-    if (this.role === 'adm') {
+    if (role === 'adm') {
+      console.log(role);
       this.admAuthenticatedDrh = true;
-      this.userAuthenticatedDrh = true;
-      this.router.navigate(['/drhs/adm']);
+      this.router.navigate(['drhs/adm'], {
+        queryParams: { user: user, role: role },
+      });
     }
   }
 
-  doLoginTre(user: string, password: string) {
-    for (let usr of this.users) {
-      if (usr.user === user && usr.password === password) {
-        this.role = usr.role;
-      }
-    }
-    if (this.role === 'user') {
+  doLoginTre(user: string, role: string) {
+
+    if (role === 'user') {
       this.userAuthenticatedTre = true;
-      this.router.navigate(['/tres/user']);
+      this.router.navigate(['tres/user'], {
+        queryParams: { user: user, role: role },
+      });
+
     }
-    if (this.role === 'adm') {
+    if (role === 'adm') {
       this.admAuthenticatedTre = true;
-      this.userAuthenticatedTre = true;
-      this.router.navigate(['/tres/adm']);
+      this.router.navigate(['tres/adm'], {
+        queryParams: { user: user, role: role },
+      });
     }
   }
   isAuthenticatedAdmDrh() {

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthAdmGuard } from './guards/auth-adm.guard';
+import { AuthCommonGuard } from './guards/auth-common.guard';
 import { AuthUserGuard } from './guards/auth-user.guard';
 import { LoginComponent } from './login/login.component';
-import { AuthCommonGuard } from './guards/auth-common.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -14,7 +14,7 @@ const routes: Routes = [
       import('src/app/users/users.module').then(
         (m) => m.UsersModule
       ),
-      canActivate: [AuthUserGuard]
+    //canActivate: [AuthUserGuard]
   },
 
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
       import('src/app/drhs/drhs.module').then(
         (m) => m.DrhsModule
       ),
-      canActivate: [AuthAdmGuard, AuthCommonGuard]
+    //canActivate: [AuthAdmGuard, AuthCommonGuard]
   },
   {
     path: 'tres',
@@ -31,7 +31,7 @@ const routes: Routes = [
       import('src/app/tres/tres.module').then(
         (m) => m.TresModule
       ),
-     canActivate: [AuthAdmGuard, AuthCommonGuard]
+    // canActivate: [AuthAdmGuard, AuthCommonGuard]
   },
 ];
 

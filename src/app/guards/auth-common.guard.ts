@@ -24,7 +24,11 @@ export class AuthCommonGuard {
       this.router.navigate(['/drhs/user']);
       return true;
     }
-
+    if (this.authService.isAuthenticatedUserTre()) {
+      this.router.navigate(['/tres/user']);
+      return true;
+    }
+    this.router.navigate(['/']);
     return false;
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/shared/model/user';
 import { AuthService } from './auth.service';
@@ -24,19 +24,32 @@ export class LoginComponent implements OnDestroy {
   subscription = new Subscription();
 
   constructor(
-    private formBuilder: NonNullableFormBuilder,
     private snackBar: MatSnackBar,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
-    this.authService.list().subscribe((users: User[]) => (this.users = users));
+    this.subscription = this.authService
+      .list()
+      .subscribe((users: User[]) => (this.users = users));
   }
 
   onSubmitDrh() {
-    this.authService.doLoginDrh(this.user, this.password);
+    for (let usr of this.users) {
+      if (usr.user === this.user && usr.password === this.password) {
+        this.userAuth = usr;
+      }
+    }
+    this.authService.doLoginDrh(this.userAuth.user, this.userAuth.role);
+
   }
 
   onSubmitTre() {
-    this.authService.doLoginTre(this.user, this.password);
+    for (let usr of this.users) {
+      if (usr.user === this.user && usr.password === this.password) {
+        this.userAuth = usr;
+      }
+    }
+    this.authService.doLoginTre(this.userAuth.user, this.userAuth.role);
   }
 
   clear() {

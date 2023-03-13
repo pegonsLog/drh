@@ -5,7 +5,7 @@ import { ListAdmTresComponent} from './list-adm/list-adm-tres.component';
 import { ListUserTresComponent } from './list-user/list-user-tres.component';
 
 const routes: Routes = [
-  {path: '', component: ListUserTresComponent},
+  {path: 'user', component: ListUserTresComponent},
   {path: 'adm', component: ListAdmTresComponent},
   {path: 'new', component: FormTreComponent},
   {path: 'edit', component: FormTreComponent}
