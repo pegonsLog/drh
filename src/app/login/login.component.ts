@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/shared/model/user';
 import { AuthService } from './auth.service';
@@ -12,7 +11,6 @@ import { AuthService } from './auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnDestroy {
-
   user: string = '';
   password: string = '';
   userAuth: User = {
@@ -28,19 +26,32 @@ export class LoginComponent implements OnDestroy {
   constructor(
     private formBuilder: NonNullableFormBuilder,
     private snackBar: MatSnackBar,
-    private router: Router,
-    private loginService: AuthService
+    private authService: AuthService
   ) {
-    this.loginService.list().subscribe((users: User[]) => (this.users = users));
+    this.authService.list().subscribe((users: User[]) => (this.users = users));
   }
 
-  onSubmit(type: string) {
-    this.loginService.doLogin(this.user, this.password, type);
+  onSubmitDrh() {
+    this.authService.doLoginDrh(this.user, this.password);
+  }
+
+  onSubmitTre() {
+    this.authService.doLoginTre(this.user, this.password);
   }
 
   clear() {
+    this.user = '';
+    this.password = '';
+  }
+
+  adm() {
     this.user = '564';
     this.password = '564';
+  }
+
+  userCommon() {
+    this.user = '410';
+    this.password = '410';
   }
 
   onError() {
