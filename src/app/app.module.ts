@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule } from './login/login.module';
-import { UsersModule } from './users/users.module';
-import { HttpClientModule } from '@angular/common/http';
 import { DrhsModule } from './drhs/drhs.module';
+import { HomeModule } from './home/home.module';
+import { LoginModule } from './login/login.module';
 import { TresModule } from './tres/tres.module';
+import { UsersModule } from './users/users.module';
 
 
 
@@ -25,6 +26,7 @@ import { TresModule } from './tres/tres.module';
     DrhsModule,
     TresModule,
     HttpClientModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -18,7 +18,7 @@ export class FormUserComponent {
   onSubmit() {}
 
   voltar() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/users']);
   }
 
 }

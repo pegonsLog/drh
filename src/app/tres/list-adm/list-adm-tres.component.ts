@@ -36,19 +36,19 @@ export class ListAdmTresComponent {
       }
 
       voltar() {
-        this.router.navigate(['/'])
+        this.router.navigate(['/home']);
   }
 
   onSave(matricula: string) {
-    this.router.navigate(['tres/new']);
+    this.router.navigate(['/tres/new']);
   }
 
   onUsers() {
-    this.router.navigate(['users/']);
+    this.router.navigate(['/users']);
   }
 
   edit() {
-    console.log('Edit');
+    this.router.navigate(['/tres/edit']);
   }
   delete() {
     console.log('Delete');

@@ -34,7 +34,7 @@ export class ListUserTresComponent {
       }
 
       voltar() {
-        this.router.navigate(['/'])
+        this.router.navigate(['/home']);
   }
 
   ngOnInit() {}

@@ -3,7 +3,6 @@
     <mat-toolbar color="primary" id="peso-fonte"
       >CONSULTA DE DRH E TRE</mat-toolbar
     >
-
     <mat-form-field class="full-width">
       <input matInput placeholder="Usuário" [(ngModel)]="user" name="user" />
     </mat-form-field>
@@ -16,23 +15,14 @@
         name="password"
       />
     </mat-form-field>
-
     <mat-card-actions>
       <button
         id="button-drh"
-        (click)="onSubmitDrh()"
+        (click)="onSubmit()"
         name="user"
         mat-raised-button
       >
-        DRH
-      </button>
-      <button
-        id="button-tre"
-        (click)="onSubmitTre()"
-        name="password"
-        mat-raised-button
-      >
-        TRE
+        Login
       </button>
 
       <button type="button" mat-raised-button (click)="clear()">Limpar</button>

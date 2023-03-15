@@ -33,23 +33,20 @@ export class LoginComponent implements OnDestroy {
       .subscribe((users: User[]) => (this.users = users));
   }
 
-  onSubmitDrh() {
+  onSubmit() {
     for (let usr of this.users) {
       if (usr.user === this.user && usr.password === this.password) {
         this.userAuth = usr;
       }
     }
-    this.authService.doLoginDrh(this.userAuth.user, this.userAuth.role);
 
-  }
-
-  onSubmitTre() {
-    for (let usr of this.users) {
-      if (usr.user === this.user && usr.password === this.password) {
-        this.userAuth = usr;
-      }
-    }
-    this.authService.doLoginTre(this.userAuth.user, this.userAuth.role);
+    this.router.navigate(['/home'], {
+      queryParams: {
+        name: this.userAuth.name,
+        user: this.userAuth.user,
+        role: this.userAuth.role
+      },
+    });
   }
 
   clear() {

@@ -8,15 +8,26 @@ import { DrhsService } from '../drhs.service';
   styleUrls: ['./form-drh.component.scss'],
 })
 export class FormDrhComponent {
+  user: string;
+  role: string;
+
   constructor(
     private drhsService: DrhsService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.user = this.route.snapshot.queryParams['user'];
+    this.role = this.route.snapshot.queryParams['role'];
+  }
 
   onSubmit() {}
 
   voltar() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/drhs/adm'], {
+      queryParams: {
+        user: this.user,
+        role: this.role,
+      },
+    });
   }
 }

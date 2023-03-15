@@ -34,7 +34,7 @@ export class ListUsersDrhsComponent {
       .subscribe((drhs: any) => (this.list = drhs));
   }
   voltar() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   ngOnInit() {}

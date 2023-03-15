@@ -11,9 +11,8 @@ export class AuthUserGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | boolean {
-    if (this.authService.isAuthenticatedUserDrh()) {
       return true;
-    }
+    
     return false;
   }
 }

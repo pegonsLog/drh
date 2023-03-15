@@ -36,21 +36,21 @@ export class ListAdmDrhsComponent {
       .subscribe((drhs: any) => (this.list = drhs));
   }
   voltar() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   onSave(matricula: string) {
-    this.router.navigate(['drhs/new']);
-  }
-
-  onUsers() {
-    this.router.navigate(['users/'], {
-      queryParams: { role: this.role },
+    this.router.navigate(['drhs/new'], {
+      queryParams: { role: this.role, user: this.matricula },
     });
   }
 
+  onUsers() {
+    this.router.navigate(['/users']);
+  }
+
   edit() {
-    console.log('Edit');
+    this.router.navigate(['drhs/edit']);
   }
   delete() {
     console.log('Delete');

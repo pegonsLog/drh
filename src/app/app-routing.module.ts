@@ -1,37 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthAdmGuard } from './guards/auth-adm.guard';
-import { AuthCommonGuard } from './guards/auth-common.guard';
-import { AuthUserGuard } from './guards/auth-user.guard';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
 
   {
+    path: 'home',
+    loadChildren: () =>
+      import('src/app/home/home.module').then((m) => m.HomeModule),
+  },
+
+  {
     path: 'users',
     loadChildren: () =>
-      import('src/app/users/users.module').then(
-        (m) => m.UsersModule
-      ),
-    //canActivate: [AuthUserGuard]
+      import('src/app/users/users.module').then((m) => m.UsersModule),
   },
 
   {
     path: 'drhs',
     loadChildren: () =>
-      import('src/app/drhs/drhs.module').then(
-        (m) => m.DrhsModule
-      ),
-    //canActivate: [AuthAdmGuard, AuthCommonGuard]
+      import('src/app/drhs/drhs.module').then((m) => m.DrhsModule),
   },
   {
     path: 'tres',
     loadChildren: () =>
-      import('src/app/tres/tres.module').then(
-        (m) => m.TresModule
-      ),
-    // canActivate: [AuthAdmGuard, AuthCommonGuard]
+      import('src/app/tres/tres.module').then((m) => m.TresModule),
   },
 ];
 

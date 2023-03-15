@@ -25,10 +25,11 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   ) {
     this.usersService.list().subscribe((users: any) => (this.list = users));
     this.role = this.route.snapshot.queryParams['role'];
+    console.log(this.role);
   }
 
   onSave() {
-    this.router.navigate(['users/new']);
+    this.router.navigate(['/users/new']);
   }
 
   voltar() {
