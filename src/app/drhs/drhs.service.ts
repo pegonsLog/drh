@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Drh } from 'src/app/shared/model/drh';
-import { User } from 'src/app/shared/model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,22 @@ export class DrhsService {
 
   constructor(private http: HttpClient) {}
 
-  list(): Observable<Drh[]> {
+  listDrh(): Observable<Drh[]> {
     return this.http.get<Drh[]>(this.API);
+  }
+
+  findOne(id: number): Observable<Drh> {
+    const url = `${this.API}/${id}`; 
+    return this.http.get<Drh>(url).pipe(
+      map((response: Drh) => {
+        const drh: Drh = {
+          id: response.id,
+          registration: response.registration,
+          period: response.period,
+          date: response.date,
+        };
+        return drh;
+      })
+    );
   }
 }

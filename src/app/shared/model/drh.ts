@@ -1,5 +1,5 @@
 export interface Drh {
-  order: number,
+  id: number,
   registration: string
   period: string,
   date: string,

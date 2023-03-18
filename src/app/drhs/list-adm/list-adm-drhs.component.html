@@ -3,7 +3,7 @@
     <mat-toolbar id="toolbar" color="primary"
       >DRHs - Mat.: {{ matricula }}
       <span id="buttons">
-        <button (click)="onSave(matricula)" id="mat-button-custom-adm">
+        <button (click)="onSave()" id="mat-button-custom-adm">
           <mat-icon class="new" fontSet="material-icons-round">add</mat-icon>
         </button>
         <button (click)="onUsers()" id="mat-button-custom-adm">
@@ -37,7 +37,7 @@
           </th>
           <td mat-cell *matCellDef="let drh">
             <span id="actions">
-              <button (click)="edit()" id="mat-button-custom">
+              <button (click)="edit(drh.id)" id="mat-button-custom">
                 <mat-icon id="edit" fontSet="material-icons-outlined"
                   >edit</mat-icon
                 >

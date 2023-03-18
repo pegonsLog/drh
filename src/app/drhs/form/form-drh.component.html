@@ -5,13 +5,13 @@
     >
 
       <mat-form-field class="full-width">
-        <input matInput placeholder="Matrícula" name="registration"/>
+        <input matInput placeholder="Matrícula" name="registration" [(ngModel)]="drh.registration"/>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Período" name="period" mask="9999/9999"/>
+        <input matInput placeholder="Período" name="period" mask="9999/9999" [(ngModel)]="drh.period"/>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Data do uso" name="date" mask="d0/M0/0000"/>
+        <input matInput placeholder="Data do uso" name="date" mask="d0/M0/0000" [(ngModel)]="drh.date"/>
       </mat-form-field>
     </mat-card-content>
 

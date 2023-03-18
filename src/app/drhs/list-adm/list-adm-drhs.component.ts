@@ -11,6 +11,12 @@ import { DrhsService } from '../drhs.service';
 })
 export class ListAdmDrhsComponent {
   list: Drh[] = [];
+  drh: Drh = {
+    id: 0,
+    registration: '',
+    period: '',
+    date: ''
+  }
   matricula: string;
   role: string;
   displayedColumns: string[] = ['registration', 'period', 'date', 'actions'];
@@ -27,7 +33,7 @@ export class ListAdmDrhsComponent {
     this.role = this.route.snapshot.queryParams['role'];
 
     this.subscription = this.drhsService
-      .list()
+      .listDrh()
       .pipe(
         map((drhs: Drh[]) =>
           drhs.filter((drh: any) => drh.registration === this.matricula)
@@ -39,7 +45,7 @@ export class ListAdmDrhsComponent {
     this.router.navigate(['/home']);
   }
 
-  onSave(matricula: string) {
+  onSave() {
     this.router.navigate(['drhs/new'], {
       queryParams: { role: this.role, user: this.matricula },
     });
@@ -49,14 +55,12 @@ export class ListAdmDrhsComponent {
     this.router.navigate(['/users']);
   }
 
-  edit() {
-    this.router.navigate(['drhs/edit']);
+  edit(id: number) {
+   this.router.navigate(['/drhs/edit', id]);
   }
   delete() {
     console.log('Delete');
   }
-
-  ngOnInit() {}
   ngOnDestroy() {
     this.subscription.unsubscribe;
   }

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Drh } from 'src/app/shared/model/drh';
 import { DrhsService } from '../drhs.service';
 
 @Component({
@@ -10,6 +12,14 @@ import { DrhsService } from '../drhs.service';
 export class FormDrhComponent {
   user: string;
   role: string;
+ // data: Drh;
+  drh: Drh = {
+    id: 0,
+    registration: '',
+    period: '',
+    date: '',
+  };
+  isEdit: boolean = false;
 
   constructor(
     private drhsService: DrhsService,
@@ -18,6 +28,10 @@ export class FormDrhComponent {
   ) {
     this.user = this.route.snapshot.queryParams['user'];
     this.role = this.route.snapshot.queryParams['role'];
+    this.drh = this.route.snapshot.data['drh'];
+  }
+  ngOnInit(): void {
+  
   }
 
   onSubmit() {}

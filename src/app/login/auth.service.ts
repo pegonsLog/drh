@@ -13,6 +13,7 @@ export class AuthService {
   users: User[] = [];
   role: string = '';
   user: User = {
+    id: 0,
     user: '',
     name: '',
     password: '',

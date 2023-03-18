@@ -1,5 +1,5 @@
 export interface Tre {
-  order: number,
+  id: number,
   registration: string
   year: string,
   date: string,

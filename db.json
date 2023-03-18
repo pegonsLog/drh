@@ -332,61 +332,73 @@
 
   "drhs": [
     {
+      "id": 1,
       "registration": "564",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
     {
+      "id": 2,
        "registration": "564",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
     {
+      "id": 3,
       "registration": "564",
       "period": "2023/2024",
       "date": "Disponível"
     },
     {
+      "id": 4,
        "registration": "410",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
     {
+      "id": 5,
       "registration": "564",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
     {
+      "id": 6,
       "registration": "564",
       "period": "2023/2024",
       "date": "Disponível"
     },
     {
+      "id": 7,
       "registration": "410",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
     {
+      "id": 8,
       "registration": "564",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
     {
+      "id": 9,
       "registration": "410",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
     {
+      "id": 10,
       "registration": "564",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
   {
+    "id": 11,
      "registration": "410",
     "period": "2023/2024",
     "date": "21/03/2023"
   },
   {
+    "id": 12,
     "registration": "564",
     "period": "2023/2024",
     "date": "21/03/2023"
@@ -395,31 +407,37 @@
 
   "tres": [
     {
+      "id": 1,
       "registration": "564",
       "year": "2022",
       "date": "21/03/2023"
     },
     {
+      "id": 2,
       "registration": "564",
       "year": "2022",
       "date": "21/03/2023"
     },
     {
+      "id": 3,
       "registration": "564",
       "year": "2022",
       "date": "21/03/2023"
     },
     {
+      "id": 4,
       "registration": "564",
       "year": "2022",
       "date": "21/03/2023"
     },
     {
+      "id": 5,
       "registration": "410",
       "year": "2022",
       "date": "21/03/2023"
     },
     {
+      "id": 6,
       "registration": "410",
       "year": "2022",
       "date": "21/03/2023"

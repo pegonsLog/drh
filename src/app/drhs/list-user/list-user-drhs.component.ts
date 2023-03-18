@@ -25,7 +25,7 @@ export class ListUsersDrhsComponent {
     this.matricula = this.route.snapshot.queryParams['user'];
 
     this.subscription = this.drhsService
-      .list()
+      .listDrh()
       .pipe(
         map((drhs: Drh[]) =>
           drhs.filter((drh: any) => drh.registration === this.matricula)
@@ -37,7 +37,6 @@ export class ListUsersDrhsComponent {
     this.router.navigate(['/home']);
   }
 
-  ngOnInit() {}
   ngOnDestroy() {
     this.subscription.unsubscribe;
   }
