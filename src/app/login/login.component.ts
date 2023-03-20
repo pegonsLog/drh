@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/shared/model/User';
+import { User } from 'src/app/shared/models/User';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -34,14 +34,22 @@ export class LoginComponent implements OnDestroy {
       .subscribe((users: User[]) => (this.users = users));
   }
 
-  onSubmit() {
+  drh(drh: string) {
+    this.query(drh);
+  }
+
+  tre(tre: string) {
+    this.query(tre);
+  }
+
+  query(type: string) {
     for (let usr of this.users) {
       if (usr.user === this.user && usr.password === this.password) {
         this.userAuth = usr;
       }
     }
     if (this.userAuth && this.userAuth.role === 'user') {
-      this.router.navigate(['/home'], {
+      this.router.navigate([`/${type}/user`], {
         queryParams: {
           name: this.userAuth.name,
           user: this.userAuth.user,
@@ -50,7 +58,13 @@ export class LoginComponent implements OnDestroy {
       });
     }
     if (this.userAuth && this.userAuth.role === 'adm') {
-      this.router.navigate(['/administration']);
+      this.router.navigate(['/administrations'], {
+        queryParams: {
+          name: this.userAuth.name,
+          user: this.userAuth.user,
+          role: this.userAuth.role,
+        },
+      });
     }
     if (this.user === '' || this.password === '') {
       alert('Usuário e/ou senha inválido(s)!');

@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, Subscription } from 'rxjs';
-import { Drh } from 'src/app/shared/model/Drh';
+import { Drh } from 'src/app/shared/models/Drh';
 import { DrhsService } from '../drhs.service';
 import { Location } from '@angular/common';
 

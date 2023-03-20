@@ -1,1 +1,33 @@
-<p>administration works!</p>
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar color="primary" id="peso-fonte"
+      >Usuário: {{ name }}
+    </mat-toolbar>
+    <mat-form-field class="input">
+      <input
+        matInput
+        placeholder="Matrícula"
+        name="registration"
+        [(ngModel)]="user"
+      />
+    </mat-form-field>
+      <button id="button-drh" type="button" mat-raised-button (click)="onDrh()">
+        DRH
+      </button>
+      <button id="button-tre" type="button" mat-raised-button (click)="onTre()">
+        TRE
+      </button>
+      <button id="button-usuario" type="button" mat-raised-button (click)="onUsers()">
+        USUÁRIOS
+      </button>
+      <button
+        id="button-sair"
+        type="button"
+        mat-raised-button
+        (click)="cancel()"
+      >
+        SAIR
+      </button>
+  </mat-card-content>
+</mat-card>
+

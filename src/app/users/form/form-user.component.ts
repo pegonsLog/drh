@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/shared/model/User';
+import { User } from 'src/app/shared/models/User';
 import { UsersService } from '../users.service';
 import { Location } from '@angular/common';
 

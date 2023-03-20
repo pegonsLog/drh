@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DrhsService } from '../../drhs/drhs.service';
 import { TresService } from '../tres.service';
 import { Location } from '@angular/common';
-import { Tre } from 'src/app/shared/model/Tre';
+import { Tre } from 'src/app/shared/models/Tre';
 
 @Component({
   selector: 'app-form-tre',

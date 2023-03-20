@@ -13,5 +13,6 @@ import { AngularMaterialModule } from '../shared/angular-material/angular-materi
     AngularMaterialModule,
     FormsModule,
   ],
+  exports: [AdministrationComponent]
 })
 export class AdministrationModule {}

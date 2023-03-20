@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, Subscription } from 'rxjs';
-import { Drh } from 'src/app/shared/model/Drh';
+import { Drh } from 'src/app/shared/models/Drh';
 import { DrhsService } from '../drhs.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class ListUsersDrhsComponent {
   list$: Observable<any>;
   matricula: string;
   displayedColumns: string[] = ['period', 'date'];
-  
+
   constructor(
     private drhsService: DrhsService,
     private route: ActivatedRoute,

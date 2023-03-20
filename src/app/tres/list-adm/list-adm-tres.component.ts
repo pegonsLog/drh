@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, Subscription } from 'rxjs';
-import { Tre } from 'src/app/shared/model/Tre';
+import { Tre } from 'src/app/shared/models/Tre';
 import { TresService } from '../tres.service';
 import { Location } from '@angular/common';
 
@@ -46,7 +46,7 @@ export class ListAdmTresComponent {
       queryParams: { role: this.role, user: this.matricula },
     });
   }
-  
+
   edit(id: number) {
     this.router.navigate(['/tres/edit', id]);
   }

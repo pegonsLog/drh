@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { User } from 'src/app/shared/model/User';
+import { User } from 'src/app/shared/models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class UsersService {
     return this.http.get<User[]>(this.API);
   }
   findOne(id: number): Observable<User> {
-    const url = `${this.API}/${id}`; 
+    const url = `${this.API}/${id}`;
     return this.http.get<User>(url).pipe(
       map((response: User) => {
         const user: User = {

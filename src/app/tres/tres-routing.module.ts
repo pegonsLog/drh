@@ -7,7 +7,7 @@ import { ListUserTresComponent } from './list-user/list-user-tres.component';
 
 const routes: Routes = [
   {path: 'user', component: ListUserTresComponent},
-  {path: 'adm5Ft76#$78&8uio&8)#33356', component: ListAdmTresComponent},
+  {path: 'adm5Ft76#$78&8uio&8)#80976', component: ListAdmTresComponent},
   {path: 'new', component: FormTreComponent, resolve: {tre: TreResolver}},
   {path: 'edit/:id', component: FormTreComponent, resolve: {tre: TreResolver}}
 ];

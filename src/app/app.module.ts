@@ -7,10 +7,10 @@ import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-m
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DrhsModule } from './drhs/drhs.module';
-import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
 import { TresModule } from './tres/tres.module';
 import { UsersModule } from './users/users.module';
+import { AdministrationModule } from './administration/administration.module';
 
 
 
@@ -26,7 +26,7 @@ import { UsersModule } from './users/users.module';
     DrhsModule,
     TresModule,
     HttpClientModule,
-    HomeModule
+    AdministrationModule
   ],
   providers: [],
   bootstrap: [AppComponent],
