@@ -1,45 +1,40 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Subscription } from 'rxjs';
-import { Tre } from 'src/app/shared/model/tre';
+import { map, Observable, Subscription } from 'rxjs';
+import { Tre } from 'src/app/shared/model/Tre';
 import { TresService } from '../tres.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-list-user-tres',
   templateUrl: './list-user-tres.component.html',
-  styleUrls: ['./list-user-tres.component.scss']
+  styleUrls: ['./list-user-tres.component.scss'],
 })
 export class ListUserTresComponent {
-
-  list: Tre[] = [];
+  list$: Observable<any>;
 
   matricula: string;
 
-  displayedColumns: string[] = ['registration', 'year', 'date'];
-  dataSource = this.list;
+  displayedColumns: string[] = ['year', 'date'];
 
-  subscription = new Subscription();
-
-  constructor(private tresService: TresService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private tresService: TresService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location
+  ) {
     this.matricula = this.route.snapshot.queryParams['user'];
 
-    this.tresService
+    this.list$ = this.tresService
       .list()
       .pipe(
         map((drhs: Tre[]) =>
-        drhs.filter((drh: any) => drh.registration === this.matricula)
+          drhs.filter((drh: any) => drh.registration === this.matricula)
         )
-        )
-        .subscribe((drhs: any) => (this.list = drhs));
-      }
-
-      voltar() {
-        this.router.navigate(['/home']);
+      );
   }
 
-  ngOnInit() {}
-  ngOnDestroy() {
-    this.subscription.unsubscribe;
+  voltar() {
+    this.location.back();
   }
 }
-

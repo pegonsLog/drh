@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/shared/model/user';
+import { User } from 'src/app/shared/model/User';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -40,14 +40,22 @@ export class LoginComponent implements OnDestroy {
         this.userAuth = usr;
       }
     }
-
-    this.router.navigate(['/home'], {
-      queryParams: {
-        name: this.userAuth.name,
-        user: this.userAuth.user,
-        role: this.userAuth.role
-      },
-    });
+    if (this.userAuth && this.userAuth.role === 'user') {
+      this.router.navigate(['/home'], {
+        queryParams: {
+          name: this.userAuth.name,
+          user: this.userAuth.user,
+          role: this.userAuth.role,
+        },
+      });
+    }
+    if (this.userAuth && this.userAuth.role === 'adm') {
+      this.router.navigate(['/administration']);
+    }
+    if (this.user === '' || this.password === '') {
+      alert('Usuário e/ou senha inválido(s)!');
+      this.router.navigate(['']);
+    }
   }
 
   clear() {
@@ -56,8 +64,8 @@ export class LoginComponent implements OnDestroy {
   }
 
   adm() {
-    this.user = '564';
-    this.password = '564';
+    this.user = '2611';
+    this.password = '0406';
   }
 
   userCommon() {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Tre } from 'src/app/shared/model/tre';
+import { map, Observable } from 'rxjs';
+import { Tre } from 'src/app/shared/model/Tre';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +14,20 @@ export class TresService {
 
   list(): Observable<Tre[]>{
     return this.http.get<Tre[]>(this.API);
+  }
+
+  findOne(id: number): Observable<Tre> {
+    const url = `${this.API}/${id}`; 
+    return this.http.get<Tre>(url).pipe(
+      map((response: Tre) => {
+        const tre: Tre = {
+          id: response.id,
+          registration: response.registration,
+          year: response.year,
+          date: response.date,
+        };
+        return tre;
+      })
+    );
   }
 }

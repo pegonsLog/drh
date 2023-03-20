@@ -1,332 +1,416 @@
 {
   "users": [
     {
+      "id": 1,
       "user": "35",
       "name": "Demétrios Navais",
       "password": "35",
       "role": "user"
     },
     {
+      "id": 2,
       "user": "63",
       "name": "Florindo Peroni",
       "password": "63",
       "role": "user"
     },
     {
+      "id": 3,
       "user": "168",
       "name": "Simone Christine",
       "password": "168",
       "role": "user"
     },
     {
+      "id": 4,
       "user": "219",
       "name": "Gilberto Geraldo",
       "password": "219",
       "role": "user"
     },
-    { "user": "281", "name": "Maria Inês", "password": "281", "role": "user" },
-    { "user": "286", "name": "Iêda Milton", "password": "286", "role": "user" },
     {
+      "id": 5,
+      "user": "281",
+      "name": "Maria Inês",
+      "password": "281",
+      "role": "user"
+    },
+    {
+      "id": 6,
+      "user": "286",
+      "name": "Iêda Milton",
+      "password": "286",
+      "role": "user"
+    },
+    {
+      "id": 7,
       "user": "287",
       "name": "Modesto Pereira",
       "password": "287",
       "role": "user"
     },
     {
+      "id": 8,
       "user": "367",
       "name": "Antônio Nunes",
       "password": "367",
       "role": "user"
     },
     {
+      "id": 9,
       "user": "395",
       "name": "Heraldo Carneiro",
       "password": "395",
       "role": "user"
     },
     {
+      "id": 10,
       "user": "410",
       "name": "Amauri Timótheo",
       "password": "410",
       "role": "user"
     },
     {
+      "id": 11,
       "user": "540",
       "name": "Gilberto Marcos",
       "password": "540",
       "role": "user"
     },
     {
+      "id": 12,
       "user": "564",
       "name": "Pedro Gonçalves",
       "password": "564",
-      "role": "adm"
+      "role": "user"
     },
     {
+      "id": 13,
       "user": "580",
       "name": "Rubens Fernandes",
       "password": "580",
       "role": "user"
     },
     {
+      "id": 14,
       "user": "702",
       "name": "Victor Severino",
       "password": "702",
       "role": "user"
     },
-    { "user": "705", "name": "Ary César", "password": "705", "role": "user" },
-    { "user": "722", "name": "Dário Leite", "password": "722", "role": "user" },
     {
+      "id": 15,
+      "user": "705",
+      "name": "Ary César",
+      "password": "705",
+      "role": "user"
+    },
+    {
+      "id": 16,
+      "user": "722",
+      "name": "Dário Leite",
+      "password": "722",
+      "role": "user"
+    },
+    {
+      "id": 17,
       "user": "725",
       "name": "Flávio André",
       "password": "725",
       "role": "user"
     },
     {
+      "id": 18,
       "user": "736",
       "name": "Josué Ferreira",
       "password": "736",
       "role": "user"
     },
     {
+      "id": 19,
       "user": "737",
       "name": "Alexandre do Carmo",
       "password": "737",
       "role": "user"
     },
     {
+      "id": 20,
       "user": "744",
       "name": "Renato Miranda",
       "password": "744",
       "role": "user"
     },
-    {
+    { "id": 21,
       "user": "751",
       "name": "Luciano Evaristo",
       "password": "751",
       "role": "user"
     },
     {
+      "id": 22,
       "user": "776",
       "name": "Rodrigo Silveira",
       "password": "776",
       "role": "user"
     },
     {
+      "id": 23,
       "user": "800",
       "name": "Cleóbulo Nunes",
       "password": "800",
       "role": "user"
     },
     {
+      "id": 24,
       "user": "821",
       "name": "Carlos Alberto",
       "password": "821",
       "role": "user"
     },
     {
+      "id": 25,
       "user": "837",
       "name": "Roberto Emiliano",
       "password": "837",
       "role": "user"
     },
     {
+      "id": 26,
       "user": "842",
       "name": "Carlos Camilo",
       "password": "842",
       "role": "user"
     },
     {
+      "id": 27,
       "user": "889",
       "name": "Gisele Carvalho",
       "password": "889",
       "role": "user"
     },
     {
+      "id": 28,
       "user": "891",
       "name": "Marcelo Elias",
       "password": "891",
       "role": "user"
     },
     {
+      "id": 29,
       "user": "938",
       "name": "Anderson Ribas",
       "password": "938",
       "role": "user"
     },
     {
+      "id": 30,
       "user": "943",
       "name": "Igor Gonçalves",
       "password": "943",
       "role": "user"
     },
     {
+      "id": 31,
       "user": "954",
       "name": "Roberto Júnior",
       "password": "954",
       "role": "user"
     },
     {
+      "id": 32,
       "user": "1009",
       "name": "Abdo Elias",
       "password": "1009",
       "role": "user"
     },
     {
+      "id": 33,
       "user": "1038",
       "name": "Emerson Praes",
       "password": "1038",
       "role": "user"
     },
     {
+      "id": 34,
       "user": "1049",
       "name": "Eliane Vanessa",
       "password": "1049",
       "role": "user"
     },
     {
+      "id": 35,
       "user": "1096",
       "name": "Willian Servino",
       "password": "1096",
       "role": "user"
     },
     {
+      "id": 36,
       "user": "1101",
       "name": "José Orestes",
       "password": "1101",
       "role": "user"
     },
     {
+      "id": 37,
       "user": "1104",
       "name": "Gilmar Bacelete",
       "password": "1104",
       "role": "user"
     },
     {
+      "id": 38,
       "user": "1107",
       "name": "Ana Cristina",
       "password": "1107",
       "role": "user"
     },
     {
+      "id": 39,
       "user": "1111",
       "name": "Cintia Fleming",
       "password": "1111",
       "role": "user"
     },
     {
+      "id": 40,
       "user": "1113",
       "name": "Eduardo Alves",
       "password": "1113",
       "role": "user"
     },
     {
+      "id": 41,
       "user": "1122",
       "name": "Elenice Canuto",
       "password": "1122",
       "role": "user"
     },
     {
+      "id": 42,
       "user": "1125",
       "name": "Valéria Gonçalves",
       "password": "1125",
       "role": "user"
     },
     {
+      "id": 43,
       "user": "1131",
       "name": "Roberto Coelho",
       "password": "1131",
       "role": "user"
     },
     {
+      "id": 44,
       "user": "1140",
       "name": "Jaime Calisto",
       "password": "1140",
       "role": "user"
     },
     {
+      "id": 45,
       "user": "1163",
       "name": "Viviane Ceres",
       "password": "1163",
       "role": "user"
     },
     {
+      "id": 46,
       "user": "1166",
       "name": "Emerson Silva",
       "password": "1166",
       "role": "user"
     },
     {
+      "id": 47,
       "user": "1169",
       "name": "Valério Rocha",
       "password": "1169",
       "role": "user"
     },
     {
+      "id": 48,
       "user": "1170",
       "name": "Antônio Natalino",
       "password": "1170",
       "role": "user"
     },
     {
+      "id": 49,
       "user": "1217",
       "name": "Almir Fabiano",
       "password": "1217",
       "role": "user"
     },
     {
+      "id": 50,
       "user": "1226",
       "name": "Hipólito Garcia",
       "password": "1226",
       "role": "user"
     },
     {
+      "id": 51,
       "user": "1487",
       "name": "Júnio Eduardo",
       "password": "1487",
       "role": "user"
     },
     {
+      "id": 52,
       "user": "1668",
       "name": "Helenice Margareth",
       "password": "1668",
       "role": "user"
     },
     {
+      "id": 53,
       "user": "1716",
       "name": "Samantha Lima",
       "password": "1716",
       "role": "user"
     },
     {
+      "id": 54,
       "user": "1756",
       "name": "Natália Nunes",
       "password": "1756",
       "role": "user"
     },
     {
+      "id": 55,
       "user": "1764",
       "name": "José Renato",
       "password": "1764",
       "role": "user"
     },
     {
+      "id": 56,
       "user": "1872",
       "name": "Amanda Ferreira",
       "password": "1872",
       "role": "user"
     },
     {
+      "id": 57,
       "user": "2105",
       "name": "Fernando Rezende",
       "password": "2105",
       "role": "user"
     },
     {
+      "id": 58,
       "user": "2107",
       "name": "Tainara Vilaça",
       "password": "2107",
       "role": "user"
+    },
+    {
+      "id": 58,
+      "user": "2611",
+      "name": "Administrador",
+      "password": "0406",
+      "role": "adm"
     }
   ],
 
@@ -339,7 +423,7 @@
     },
     {
       "id": 2,
-       "registration": "564",
+      "registration": "564",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
@@ -351,7 +435,7 @@
     },
     {
       "id": 4,
-       "registration": "410",
+      "registration": "410",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
@@ -391,18 +475,18 @@
       "period": "2023/2024",
       "date": "21/03/2023"
     },
-  {
-    "id": 11,
-     "registration": "410",
-    "period": "2023/2024",
-    "date": "21/03/2023"
-  },
-  {
-    "id": 12,
-    "registration": "564",
-    "period": "2023/2024",
-    "date": "21/03/2023"
-  }
+    {
+      "id": 11,
+      "registration": "410",
+      "period": "2023/2024",
+      "date": "21/03/2023"
+    },
+    {
+      "id": 12,
+      "registration": "564",
+      "period": "2023/2024",
+      "date": "21/03/2023"
+    }
   ],
 
   "tres": [

@@ -1,31 +1,30 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { User } from 'src/app/shared/model/user';
+import { Observable } from 'rxjs';
 import { UsersService } from '../users.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss'],
 })
-export class ListUsersComponent implements OnInit, OnDestroy {
-  list: User[] = [];
+export class ListUsersComponent {
+  list$: Observable<any>;
 
-  displayedColumns: string[] = ['user', 'name', 'password', 'role', 'actions'];
-  dataSource = this.list;
+  displayedColumns: string[] = ['name', 'password', 'role', 'actions'];
   role: string;
-
-  subscription = new Subscription();
+  user: string;
 
   constructor(
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
-    this.usersService.list().subscribe((users: any) => (this.list = users));
+    this.list$ = this.usersService.list();
     this.role = this.route.snapshot.queryParams['role'];
-    console.log(this.role);
+    this.user = this.route.snapshot.queryParams['user'];
   }
 
   onSave() {
@@ -33,18 +32,15 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   }
 
   voltar() {
-    this.router.navigate(['/']);
+    this.location.back();
   }
 
-  edit() {
-    console.log('Edit');
+  edit(id: string) {
+    this.router.navigate(['/users/edit', id], {queryParams: {
+      user: this.user
+    }});
   }
   delete() {
     console.log('Delete');
-  }
-
-  ngOnInit() {}
-  ngOnDestroy() {
-    this.subscription.unsubscribe;
   }
 }

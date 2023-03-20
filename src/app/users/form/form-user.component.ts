@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/shared/model/User';
 import { UsersService } from '../users.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-form-user',
@@ -9,16 +11,29 @@ import { UsersService } from '../users.service';
 })
 export class FormUserComponent {
 
+  userParam: User = {
+    id: 0,
+    user: '',
+    name: '',
+    password: '',
+    role: ''
+  };
+
   constructor(
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private location: Location
+  ) {
+    if(this.route.snapshot.queryParams['user']){
+      this.userParam.user = this.route.snapshot.queryParams['user'];
+    }
+  }
 
   onSubmit() {}
 
   voltar() {
-    this.router.navigate(['/users']);
+    this.location.back();
   }
 
 }

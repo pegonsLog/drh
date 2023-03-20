@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from 'src/app/shared/model/user';
+import { map, Observable } from 'rxjs';
+import { User } from 'src/app/shared/model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +14,20 @@ export class UsersService {
 
   list(): Observable<User[]>{
     return this.http.get<User[]>(this.API);
+  }
+  findOne(id: number): Observable<User> {
+    const url = `${this.API}/${id}`; 
+    return this.http.get<User>(url).pipe(
+      map((response: User) => {
+        const user: User = {
+          id: response.id,
+          user: response.user,
+          name: response.name,
+          password: response.password,
+          role: response.role
+        };
+        return user;
+      })
+    );
   }
 }

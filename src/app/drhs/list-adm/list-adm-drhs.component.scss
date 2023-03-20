@@ -75,3 +75,10 @@ table {
   display: flex;
   align-items: center;
 }
+#loading-spinner {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.15);
+}

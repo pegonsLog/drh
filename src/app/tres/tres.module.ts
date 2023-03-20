@@ -6,10 +6,11 @@ import { FormTreComponent } from './form/form-tre.component';
 import { ListAdmTresComponent } from './list-adm/list-adm-tres.component';
 import { ListUserTresComponent } from './list-user/list-user-tres.component';
 import { TresRoutingModule } from './tres-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [FormTreComponent, ListUserTresComponent, ListAdmTresComponent],
-  imports: [CommonModule, TresRoutingModule, AngularMaterialModule],
+  imports: [CommonModule, TresRoutingModule, AngularMaterialModule, FormsModule],
   exports: [FormTreComponent, ListUserTresComponent, ListAdmTresComponent],
 })
 export class TresModule {}

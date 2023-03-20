@@ -1,33 +1,44 @@
 <mat-card>
   <mat-card-content>
-    <mat-toolbar color="primary" id="peso-fonte"
-      >ADICIONAR TRE</mat-toolbar
+    <mat-toolbar color="primary" id="peso-fonte">Adicionar TRE</mat-toolbar>
+
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Matrícula"
+        name="registration"
+        [(ngModel)]="tre.registration"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Ano da eleição"
+        name="year"
+        mask="9999"
+        [(ngModel)]="tre.year"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Data do uso"
+        name="date"
+        mask="d0/M0/0000"
+        [(ngModel)]="tre.date"
+      />
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      id="button-salvar"
+      (click)="onSubmit()"
+      name="user"
+      mat-raised-button
     >
-
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Matrícula" name="registration"/>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Ano da eleição" name="year" mask="9999"/>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Data do uso" name="date" mask="d0/M0/0000"/>
-      </mat-form-field>
-    </mat-card-content>
-
-      <mat-card-actions>
-        <button
-          id="button-salvar"
-          (click)="onSubmit()"
-          name="user"
-          mat-raised-button
-        >
-         Salvar
-        </button>
-        <button type="button" mat-raised-button (click)="voltar()">
-          Cancelar
-        </button>
-      </mat-card-actions>
+      Salvar
+    </button>
+    <button type="button" mat-raised-button (click)="voltar()">Cancelar</button>
+  </mat-card-actions>
 </mat-card>
-
-

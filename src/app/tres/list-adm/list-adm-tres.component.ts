@@ -1,62 +1,57 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Subscription } from 'rxjs';
-import { Tre } from 'src/app/shared/model/tre';
+import { map, Observable, Subscription } from 'rxjs';
+import { Tre } from 'src/app/shared/model/Tre';
 import { TresService } from '../tres.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-list-adm-tres',
   templateUrl: './list-adm-tres.component.html',
-  styleUrls: ['./list-adm-tres.component.scss']
+  styleUrls: ['./list-adm-tres.component.scss'],
 })
 export class ListAdmTresComponent {
-
-  list: Tre[] = [];
+  list$: Observable<any>;
 
   matricula: string;
+  name: string;
   role: string;
 
-  displayedColumns: string[] = ['registration', 'year', 'date', 'actions'];
-  dataSource = this.list;
+  displayedColumns: string[] = ['year', 'date', 'actions'];
 
-  subscription = new Subscription();
-
-  constructor(private tresService: TresService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private tresService: TresService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location
+  ) {
     this.matricula = this.route.snapshot.queryParams['user'];
     this.role = this.route.snapshot.queryParams['role'];
+    this.name = this.route.snapshot.queryParams['name'];
 
-    this.tresService
+    this.list$ = this.tresService
       .list()
       .pipe(
-        map((drhs: Tre[]) =>
-        drhs.filter((drh: any) => drh.registration === this.matricula)
+        map((tres: Tre[]) =>
+          tres.filter((tre: any) => tre.registration === this.matricula)
         )
-        )
-        .subscribe((drhs: any) => (this.list = drhs));
-      }
-
-      voltar() {
-        this.router.navigate(['/home']);
+      );
   }
 
-  onSave(matricula: string) {
-    this.router.navigate(['/tres/new']);
+  voltar() {
+    this.location.back();
   }
-
-  onUsers() {
-    this.router.navigate(['/users']);
+  onSave() {
+    this.router.navigate(['/tres/new'], {
+      queryParams: { role: this.role, user: this.matricula },
+    });
   }
-
-  edit() {
-    this.router.navigate(['/tres/edit']);
+  
+  edit(id: number) {
+    this.router.navigate(['/tres/edit', id]);
   }
   delete() {
     console.log('Delete');
   }
 
-  ngOnInit() {}
-  ngOnDestroy() {
-    this.subscription.unsubscribe;
-  }
 }
-

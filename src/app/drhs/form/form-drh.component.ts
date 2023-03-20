@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Drh } from 'src/app/shared/model/drh';
+import { Drh } from 'src/app/shared/model/Drh';
 import { DrhsService } from '../drhs.service';
 
 @Component({
@@ -10,38 +10,33 @@ import { DrhsService } from '../drhs.service';
   styleUrls: ['./form-drh.component.scss'],
 })
 export class FormDrhComponent {
-  user: string;
   role: string;
- // data: Drh;
   drh: Drh = {
     id: 0,
     registration: '',
     period: '',
     date: '',
   };
-  isEdit: boolean = false;
 
   constructor(
     private drhsService: DrhsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
-    this.user = this.route.snapshot.queryParams['user'];
+    const user = this.route.snapshot.queryParams['user'];
     this.role = this.route.snapshot.queryParams['role'];
     this.drh = this.route.snapshot.data['drh'];
+    if (user) {
+      this.drh.registration = this.route.snapshot.queryParams['user'];
+    }
   }
   ngOnInit(): void {
-  
   }
 
   onSubmit() {}
 
   voltar() {
-    this.router.navigate(['/drhs/adm'], {
-      queryParams: {
-        user: this.user,
-        role: this.role,
-      },
-    });
+    this.location.back();
   }
 }

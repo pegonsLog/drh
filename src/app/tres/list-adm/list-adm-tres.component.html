@@ -1,45 +1,35 @@
 <mat-card>
   <mat-card-header>
     <mat-toolbar id="toolbar" color="primary"
-      >LISTA DE TREs - Mat.: {{ matricula }}
+      >TREs - Mat.: {{ matricula }}
       <span id="buttons">
-        <button (click)="onSave(matricula)" id="mat-button-custom-adm">
+        <button (click)="onSave()" id="mat-button-custom-adm">
           <mat-icon class="new" fontSet="material-icons-round">add</mat-icon>
-        </button>
-        <button  (click)="onUsers()" id="mat-button-custom-adm">
-          <mat-icon class="new" fontSet="material-icons-round">person</mat-icon>
-        </button>
+        </button>     
       </span>
     </mat-toolbar>
   </mat-card-header>
   <mat-card-content>
-    <div id="altura">
-      <table mat-table [dataSource]="list">
-        <ng-container matColumnDef="order">
-          <th mat-header-cell *matHeaderCellDef>Nº</th>
-          <td mat-cell *matCellDef="let tre">{{ tre.order }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="registration">
-          <th mat-header-cell *matHeaderCellDef>Matrícula</th>
-          <td mat-cell *matCellDef="let tre">{{ tre.registration }}</td>
-        </ng-container>
-
+    <div id="altura" *ngIf="list$ | async; else loading">
+      <table mat-table [dataSource]="list$ | async">
+     
         <ng-container matColumnDef="year">
-          <th mat-header-cell *matHeaderCellDef>Ano da Eleição</th>
+          <th mat-header-cell *matHeaderCellDef>Ano</th>
           <td mat-cell *matCellDef="let tre">{{ tre.year }}</td>
         </ng-container>
 
         <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef>Data do TRE</th>
+          <th mat-header-cell *matHeaderCellDef>Data</th>
           <td mat-cell *matCellDef="let tre">{{ tre.date }}</td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
-          <th style="text-align: center;" mat-header-cell *matHeaderCellDef>Ações</th>
+          <th style="text-align: center" mat-header-cell *matHeaderCellDef>
+            Ações
+          </th>
           <td mat-cell *matCellDef="let tre">
             <span id="actions">
-              <button (click)="edit()" id="mat-button-custom">
+              <button (click)="edit(tre.id)" id="mat-button-custom">
                 <mat-icon id="edit" fontSet="material-icons-outlined"
                   >edit</mat-icon
                 >
@@ -59,6 +49,11 @@
       <mat-divider></mat-divider>
     </div>
   </mat-card-content>
+  <ng-template #loading>
+    <div id="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
   <mat-divider></mat-divider>
   <mat-card-actions>
     <button

@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
     <mat-toolbar color="primary" id="peso-fonte"
-      >CONSULTA DE DRH E TRE</mat-toolbar
+      >Consulta de DRH e TRE - GARBO</mat-toolbar
     >
     <mat-form-field class="full-width">
       <input matInput placeholder="Usuário" [(ngModel)]="user" name="user" />
@@ -19,13 +19,20 @@
       <button
         id="button-drh"
         (click)="onSubmit()"
-        name="user"
+        name="drh"
         mat-raised-button
       >
-        Login
+        DRH
+      </button>
+      <button
+        id="button-tre"
+        name="tre"
+        mat-raised-button
+      >
+       TRE
       </button>
 
-      <button type="button" mat-raised-button (click)="clear()">Limpar</button>
+      <button type="button" mat-raised-button (click)="clear()" id="button-limpar">Limpar</button>
       <button type="button" mat-raised-button (click)="adm()">Adm</button>
       <button type="button" mat-raised-button (click)="userCommon()">
         User

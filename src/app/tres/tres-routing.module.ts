@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TreResolver } from '../resolvers/tre.resolver';
 import { FormTreComponent } from './form/form-tre.component';
 import { ListAdmTresComponent} from './list-adm/list-adm-tres.component';
 import { ListUserTresComponent } from './list-user/list-user-tres.component';
 
 const routes: Routes = [
   {path: 'user', component: ListUserTresComponent},
-  {path: 'adm', component: ListAdmTresComponent},
-  {path: 'new', component: FormTreComponent},
-  {path: 'edit', component: FormTreComponent}
+  {path: 'adm5Ft76#$78&8uio&8)#33356', component: ListAdmTresComponent},
+  {path: 'new', component: FormTreComponent, resolve: {tre: TreResolver}},
+  {path: 'edit/:id', component: FormTreComponent, resolve: {tre: TreResolver}}
 ];
 
 @NgModule({

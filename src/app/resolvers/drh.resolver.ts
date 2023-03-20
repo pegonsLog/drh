@@ -5,9 +5,9 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
 } from '@angular/router';
-import { first, Observable, of } from 'rxjs';
+import { first, Observable, of, tap, map } from 'rxjs';
 import { DrhsService } from '../drhs/drhs.service';
-import { Drh } from 'src/app/shared/model/drh';
+import { Drh } from 'src/app/shared/model/Drh';
 import { ThisReceiver } from '@angular/compiler';
 
 @Injectable({
@@ -18,16 +18,13 @@ export class DrhResolver implements Resolve<Drh> {
   constructor(private drhsService: DrhsService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Drh>{
-    if(route.params['id'] === 0){
-      return of(this.drh);
-    }
     if (route.params && route.params['id']) {
       const id: number = route.params['id'];
-      this.drhsService
-        .findOne(id)
-        .pipe(first())
-        .subscribe((data: Drh) => (this.drh = data));
-      }
+      return this.drhsService
+      .findOne(id)
+      .pipe(map((drh: Drh) => drh));
+
+    }
       return of(this.drh);
   }
 }

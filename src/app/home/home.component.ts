@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,7 +12,11 @@ export class HomeComponent {
   role: string = '';
   name: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {
     this.user = this.route.snapshot.queryParams['user'];
     this.role = this.route.snapshot.queryParams['role'];
     this.name = this.route.snapshot.queryParams['name'];
@@ -22,33 +27,23 @@ export class HomeComponent {
   }
 
   onTre() {
-    if (this.role === 'user') {
-      this.router.navigate(['/tres/user'], {
-        queryParams: {
-          user: this.user,
-        },
-      });
-    } else {
-      this.router.navigate(['/tres/adm'], {
-        queryParams: {
-          user: this.user,
-        },
-      });
-    }
+    this.router.navigate(['/tres/user'], {
+      queryParams: {
+        user: this.user,
+        name: this.name,
+      },
+    });
   }
+
   onDrh() {
-    if (this.role === 'user') {
-      this.router.navigate(['/drhs/user'], {
-        queryParams: {
-          user: this.user,
-        },
-      });
-    } else {
-      this.router.navigate(['/drhs/adm'], {
-        queryParams: {
-          user: this.user,
-        },
-      });
-    }
+    this.router.navigate(['/drhs/user'], {
+      queryParams: {
+        user: this.user,
+        name: this.name,
+      },
+    });
+  }
+  onUsers() {
+    this.router.navigate(['/users']);
   }
 }

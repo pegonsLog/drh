@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Subscription } from 'rxjs';
-import { Drh } from 'src/app/shared/model/drh';
+import { map, Observable, Subscription } from 'rxjs';
+import { Drh } from 'src/app/shared/model/Drh';
 import { DrhsService } from '../drhs.service';
 
 @Component({
@@ -10,34 +11,27 @@ import { DrhsService } from '../drhs.service';
   styleUrls: ['./list-user-drhs.component.scss'],
 })
 export class ListUsersDrhsComponent {
-  list: Drh[] = [];
+  list$: Observable<any>;
   matricula: string;
-  displayedColumns: string[] = ['registration', 'period', 'date'];
-  dataSource = this.list;
-
-  subscription = new Subscription();
-
+  displayedColumns: string[] = ['period', 'date'];
+  
   constructor(
     private drhsService: DrhsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
     this.matricula = this.route.snapshot.queryParams['user'];
 
-    this.subscription = this.drhsService
+    this.list$ = this.drhsService
       .listDrh()
       .pipe(
         map((drhs: Drh[]) =>
           drhs.filter((drh: any) => drh.registration === this.matricula)
         )
       )
-      .subscribe((drhs: any) => (this.list = drhs));
   }
-  voltar() {
-    this.router.navigate(['/home']);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe;
+  voltar(){
+  this.location.back();
   }
 }
