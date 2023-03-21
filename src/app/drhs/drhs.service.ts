@@ -27,6 +27,10 @@ export class DrhsService {
         };
         return drh;
       })
-    );
+      );
+  }
+
+  delete(id: number) {
+    return this.http.delete<Drh>(this.API + "/" + id);
   }
 }

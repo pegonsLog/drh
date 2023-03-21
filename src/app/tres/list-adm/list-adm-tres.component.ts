@@ -39,7 +39,15 @@ export class ListAdmTresComponent {
   }
 
   voltar() {
-    this.location.back();
+    this.router.navigate(['administrations'], {
+      queryParams: { role: this.role, user: this.matricula},
+    });
+  }
+
+  drh() {
+    this.router.navigate(['drhs/adm5Ft76#$78&8uio&8)#33356'], {
+      queryParams: { role: this.role, user: this.matricula, name: this.name },
+    });
   }
   onSave() {
     this.router.navigate(['/tres/new'], {

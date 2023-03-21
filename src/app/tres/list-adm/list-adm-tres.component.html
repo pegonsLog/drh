@@ -5,14 +5,14 @@
       <span id="buttons">
         <button (click)="onSave()" id="mat-button-custom-adm">
           <mat-icon class="new" fontSet="material-icons-round">add</mat-icon>
-        </button>     
+        </button>
       </span>
     </mat-toolbar>
   </mat-card-header>
   <mat-card-content>
     <div id="altura" *ngIf="list$ | async; else loading">
       <table mat-table [dataSource]="list$ | async">
-     
+
         <ng-container matColumnDef="year">
           <th mat-header-cell *matHeaderCellDef>Ano</th>
           <td mat-cell *matCellDef="let tre">{{ tre.year }}</td>
@@ -64,5 +64,12 @@
     >
       VOLTAR
     </button>
+    <button
+    id="button-drh"
+    (click)="drh()"
+    mat-raised-button
+  >
+    DRH
+  </button>
   </mat-card-actions>
 </mat-card>

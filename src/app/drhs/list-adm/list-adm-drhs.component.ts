@@ -1,16 +1,17 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable, Subscription } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { ConfirmationDialogComponent } from 'src/app/shared/dialogs/confirmation/confirmation.component';
 import { Drh } from 'src/app/shared/models/Drh';
 import { DrhsService } from '../drhs.service';
-import { Location } from '@angular/common';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-adm-drhs',
   templateUrl: './list-adm-drhs.component.html',
   styleUrls: ['./list-adm-drhs.component.scss'],
 })
-export class ListAdmDrhsComponent{
+export class ListAdmDrhsComponent {
   list$: Observable<any>;
   drh: Drh = {
     id: 0,
@@ -28,7 +29,7 @@ export class ListAdmDrhsComponent{
     private drhsService: DrhsService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    public dialogRef: MatDialog
   ) {
     this.matricula = this.route.snapshot.queryParams['user'];
     this.role = this.route.snapshot.queryParams['role'];
@@ -40,11 +41,19 @@ export class ListAdmDrhsComponent{
         map((drhs: Drh[]) =>
           drhs.filter((drh: any) => drh.registration === this.matricula)
         )
-      )
+      );
   }
 
   voltar() {
-    this.location.back();
+    this.router.navigate(['administrations'], {
+      queryParams: { role: this.role, user: this.matricula },
+    });
+  }
+
+  tre() {
+    this.router.navigate(['tres/adm5Ft76#$78&8uio&8)#80976'], {
+      queryParams: { role: this.role, user: this.matricula, name: this.name },
+    });
   }
 
   onSave() {
@@ -60,7 +69,15 @@ export class ListAdmDrhsComponent{
   edit(id: number) {
     this.router.navigate(['/drhs/edit', id]);
   }
-  delete() {
-    console.log('Delete');
+
+  delete(id: number) {
+    const dialogReference = this.dialogRef.open(ConfirmationDialogComponent);
+    dialogReference.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.drhsService.delete(id).subscribe((result) => {
+          this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356']);
+        });
+      }
+    });
   }
 }

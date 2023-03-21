@@ -140,7 +140,8 @@
       "password": "744",
       "role": "user"
     },
-    { "id": 21,
+    {
+      "id": 21,
       "user": "751",
       "name": "Luciano Evaristo",
       "password": "751",
@@ -413,14 +414,7 @@
       "role": "adm"
     }
   ],
-
   "drhs": [
-    {
-      "id": 1,
-      "registration": "564",
-      "period": "2023/2024",
-      "date": "21/03/2023"
-    },
     {
       "id": 2,
       "registration": "564",
@@ -446,20 +440,8 @@
       "date": "21/03/2023"
     },
     {
-      "id": 6,
-      "registration": "564",
-      "period": "2023/2024",
-      "date": "Disponível"
-    },
-    {
       "id": 7,
       "registration": "410",
-      "period": "2023/2024",
-      "date": "21/03/2023"
-    },
-    {
-      "id": 8,
-      "registration": "564",
       "period": "2023/2024",
       "date": "21/03/2023"
     },
@@ -470,25 +452,12 @@
       "date": "21/03/2023"
     },
     {
-      "id": 10,
-      "registration": "564",
-      "period": "2023/2024",
-      "date": "21/03/2023"
-    },
-    {
       "id": 11,
       "registration": "410",
       "period": "2023/2024",
       "date": "21/03/2023"
-    },
-    {
-      "id": 12,
-      "registration": "564",
-      "period": "2023/2024",
-      "date": "21/03/2023"
     }
   ],
-
   "tres": [
     {
       "id": 1,
