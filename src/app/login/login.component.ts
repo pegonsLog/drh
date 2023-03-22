@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/shared/models/User';
+import { User } from 'src/app/_shared/models/User';
 import { AuthService } from './auth.service';
 
 @Component({

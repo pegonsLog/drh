@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Drh } from 'src/app/shared/models/Drh';
+import { Drh } from 'src/app/_shared/models/Drh';
 
 @Injectable({
   providedIn: 'root',
@@ -27,10 +27,18 @@ export class DrhsService {
         };
         return drh;
       })
-      );
+    );
   }
 
-  delete(id: number) {
-    return this.http.delete<Drh>(this.API + "/" + id);
+  delete(id: number): Observable<Drh> {
+    return this.http.delete<Drh>(`${this.API}/${id}`);
+  }
+
+  save(drh: Drh): Observable<Drh> {
+    return this.http.post<Drh>(this.API, drh);
+  }
+
+  Update(drh: Drh): Observable<Drh> {
+    return this.http.put<Drh>(this.API, drh);
   }
 }

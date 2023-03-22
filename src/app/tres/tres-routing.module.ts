@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TreResolver } from '../resolvers/tre.resolver';
+import { TreResolver } from '../_resolvers/tre.resolver';
 import { FormTreComponent } from './form/form-tre.component';
 import { ListAdmTresComponent} from './list-adm/list-adm-tres.component';
 import { ListUserTresComponent } from './list-user/list-user-tres.component';

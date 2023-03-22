@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
-import { ConfirmationModule } from '../shared/dialogs/confirmation/confirmation.module';
+import { AngularMaterialModule } from '../_shared/angular-material/angular-material.module';
+import { ConfirmationModule } from '../_shared/dialogs/confirmation/confirmation.module';
 import { DrhsRoutingModule } from './drhs-routing.module';
 import { FormDrhComponent } from './form/form-drh.component';
 import { ListAdmDrhsComponent } from './list-adm/list-adm-drhs.component';

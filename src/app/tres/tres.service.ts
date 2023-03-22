@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Tre } from 'src/app/shared/models/Tre';
+import { Tre } from 'src/app/_shared/models/Tre';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,13 @@ export class TresService {
         return tre;
       })
     );
+  }
+  
+  delete(id: number) {
+    return this.http.delete<Tre>(`${this.API}/${id}`);
+  }
+
+  save(tre: Tre): Observable<Tre> {
+    return this.http.post<Tre>(this.API, tre);
   }
 }

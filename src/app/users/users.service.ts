@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { User } from 'src/app/shared/models/User';
+import { User } from 'src/app/_shared/models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,13 @@ export class UsersService {
         return user;
       })
     );
+  }
+    
+  delete(id: number) {
+    return this.http.delete<User>(`${this.API}/${id}`);
+  }
+  
+  save(user: User): Observable<User> {
+    return this.http.post<User>(this.API, user);
   }
 }

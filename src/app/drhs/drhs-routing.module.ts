@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DrhResolver } from '../resolvers/drh.resolver';
+import { DrhResolver } from '../_resolvers/drh.resolver';
 import { FormDrhComponent } from './form/form-drh.component';
 import { ListAdmDrhsComponent } from './list-adm/list-adm-drhs.component';
 import { ListUsersDrhsComponent } from './list-user/list-user-drhs.component';

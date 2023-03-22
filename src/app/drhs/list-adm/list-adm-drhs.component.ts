@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, OnDestroy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
-import { ConfirmationDialogComponent } from 'src/app/shared/dialogs/confirmation/confirmation.component';
-import { Drh } from 'src/app/shared/models/Drh';
+import { map, Observable, Subscription } from 'rxjs';
+import { ConfirmationDialogComponent } from 'src/app/_shared/dialogs/confirmation/confirmation.component';
+import { Drh } from 'src/app/_shared/models/Drh';
 import { DrhsService } from '../drhs.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-adm-drhs',
   templateUrl: './list-adm-drhs.component.html',
   styleUrls: ['./list-adm-drhs.component.scss'],
 })
-export class ListAdmDrhsComponent {
+export class ListAdmDrhsComponent implements OnDestroy {
   list$: Observable<any>;
   drh: Drh = {
     id: 0,
@@ -22,6 +23,7 @@ export class ListAdmDrhsComponent {
   matricula: string;
   role: string;
   name: string;
+  subscription: Subscription = new Subscription();
 
   displayedColumns: string[] = ['period', 'date', 'actions'];
 
@@ -29,7 +31,8 @@ export class ListAdmDrhsComponent {
     private drhsService: DrhsService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialogRef: MatDialog
+    public dialog: MatDialog,
+    private location: Location
   ) {
     this.matricula = this.route.snapshot.queryParams['user'];
     this.role = this.route.snapshot.queryParams['role'];
@@ -58,7 +61,13 @@ export class ListAdmDrhsComponent {
 
   onSave() {
     this.router.navigate(['drhs/new'], {
-      queryParams: { role: this.role, user: this.matricula },
+      queryParams: { role: this.role, user: this.matricula, name: this.name },
+    });
+  }
+
+  onEdit(id: number) {
+    this.router.navigate(['drhs/edit', id], {
+      queryParams: { role: this.role, user: this.matricula, name: this.name },
     });
   }
 
@@ -71,13 +80,30 @@ export class ListAdmDrhsComponent {
   }
 
   delete(id: number) {
-    const dialogReference = this.dialogRef.open(ConfirmationDialogComponent);
-    dialogReference.afterClosed().subscribe((result: any) => {
-      if (result) {
-        this.drhsService.delete(id).subscribe((result) => {
-          this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356']);
-        });
-      }
-    });
+    const dialogReference = this.dialog.open(ConfirmationDialogComponent);
+    this.subscription = dialogReference
+      .afterClosed()
+      .subscribe((result: any) => {
+        if (result) {
+          this.drhsService.delete(id).subscribe((result) => {
+            this.updateList();
+            this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356']);
+          });
+        }
+      });
+  }
+
+  updateList() {
+    this.list$ = this.drhsService
+      .listDrh()
+      .pipe(
+        map((drhs: Drh[]) =>
+          drhs.filter((drh: any) => drh.registration === this.matricula)
+        )
+      );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdministrationComponent } from './administration.component';
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { FormsModule } from '@angular/forms';
-import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
+import { AngularMaterialModule } from '../_shared/angular-material/angular-material.module';
 
 @NgModule({
   declarations: [AdministrationComponent],

@@ -4,7 +4,7 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
-import { Tre } from 'src/app/shared/models/Tre';
+import { Tre } from 'src/app/_shared/models/Tre';
 import { TresService } from '../tres/tres.service';
 
 @Injectable({

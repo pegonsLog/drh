@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "user": "35",
-      "name": "Demétrios Navais",
-      "password": "35",
-      "role": "user"
-    },
-    {
       "id": 2,
       "user": "63",
       "name": "Florindo Peroni",
@@ -15,24 +8,10 @@
       "role": "user"
     },
     {
-      "id": 3,
-      "user": "168",
-      "name": "Simone Christine",
-      "password": "168",
-      "role": "user"
-    },
-    {
       "id": 4,
       "user": "219",
       "name": "Gilberto Geraldo",
       "password": "219",
-      "role": "user"
-    },
-    {
-      "id": 5,
-      "user": "281",
-      "name": "Maria Inês",
-      "password": "281",
       "role": "user"
     },
     {
@@ -416,46 +395,22 @@
   ],
   "drhs": [
     {
-      "id": 2,
-      "registration": "564",
-      "period": "2023/2024",
-      "date": "21/03/2023"
-    },
-    {
       "id": 3,
-      "registration": "564",
-      "period": "2023/2024",
-      "date": "Disponível"
-    },
-    {
-      "id": 4,
       "registration": "410",
       "period": "2023/2024",
       "date": "21/03/2023"
+    },
+    {
+      "id": 4,
+      "registration": "564",
+      "period": "2025",
+      "date": "21/05/2023"
     },
     {
       "id": 5,
       "registration": "564",
-      "period": "2023/2024",
-      "date": "21/03/2023"
-    },
-    {
-      "id": 7,
-      "registration": "410",
-      "period": "2023/2024",
-      "date": "21/03/2023"
-    },
-    {
-      "id": 9,
-      "registration": "410",
-      "period": "2023/2024",
-      "date": "21/03/2023"
-    },
-    {
-      "id": 11,
-      "registration": "410",
-      "period": "2023/2024",
-      "date": "21/03/2023"
+      "period": "2023",
+      "date": "22/03/2023"
     }
   ],
   "tres": [
@@ -474,24 +429,6 @@
     {
       "id": 3,
       "registration": "564",
-      "year": "2022",
-      "date": "21/03/2023"
-    },
-    {
-      "id": 4,
-      "registration": "564",
-      "year": "2022",
-      "date": "21/03/2023"
-    },
-    {
-      "id": 5,
-      "registration": "410",
-      "year": "2022",
-      "date": "21/03/2023"
-    },
-    {
-      "id": 6,
-      "registration": "410",
       "year": "2022",
       "date": "21/03/2023"
     }

@@ -4,7 +4,7 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
-import { User } from 'src/app/shared/models/User';
+import { User } from 'src/app/_shared/models/User';
 import { UsersService } from '../users/users.service';
 
 @Injectable({

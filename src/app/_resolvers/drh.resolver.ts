@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 import { first, Observable, of, tap, map } from 'rxjs';
 import { DrhsService } from '../drhs/drhs.service';
-import { Drh } from 'src/app/shared/models/Drh';
+import { Drh } from 'src/app/_shared/models/Drh';
 import { ThisReceiver } from '@angular/compiler';
 
 @Injectable({

@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DrhsService } from '../../drhs/drhs.service';
-import { TresService } from '../tres.service';
 import { Location } from '@angular/common';
-import { Tre } from 'src/app/shared/models/Tre';
+import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Tre } from 'src/app/_shared/models/Tre';
+import { TresService } from '../tres.service';
 
 @Component({
   selector: 'app-form-tre',
   templateUrl: './form-tre.component.html',
   styleUrls: ['./form-tre.component.scss'],
 })
-export class FormTreComponent {
-
+export class FormTreComponent implements OnDestroy {
   role: string;
+  user: string;
+  name: string;
+  subscription: Subscription = new Subscription();
 
   tre: Tre = {
     id: 0,
@@ -26,19 +28,38 @@ export class FormTreComponent {
     private router: Router,
     private location: Location
   ) {
-
-    const user = this.route.snapshot.queryParams['user'];
+    this.user = this.route.snapshot.queryParams['user'];
+    this.name = this.route.snapshot.queryParams['name'];
     this.role = this.route.snapshot.queryParams['role'];
-    this.tre = this.route.snapshot.data['tre'];
-    if(user){
+    if (this.user) {
       this.tre.registration = this.route.snapshot.queryParams['user'];
     }
-    console.log(user)
   }
 
-  onSubmit() {}
+  onSubmit(tre: Tre) {
+    this.subscription = this.tresService.save(tre).subscribe(() => {
+      this.router.navigate(['/tres/adm5Ft76#$78&8uio&8)#80976'], {
+        queryParams: {
+          user: this.user,
+          name: this.name,
+          role: this.role,
+        },
+      });
+    });
+    alert('Tre incluído com sucesso!');
+    this.clear();
+  }
+
+  clear() {
+    this.tre.year = '';
+    this.tre.date = '';
+  }
 
   voltar() {
     this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
