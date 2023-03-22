@@ -30,12 +30,16 @@ export class TresService {
       })
     );
   }
-  
+
   delete(id: number) {
     return this.http.delete<Tre>(`${this.API}/${id}`);
   }
 
   save(tre: Tre): Observable<Tre> {
     return this.http.post<Tre>(this.API, tre);
+  }
+
+  update(tre: Tre): Observable<Tre> {
+    return this.http.put<Tre>(this.API, tre);
   }
 }

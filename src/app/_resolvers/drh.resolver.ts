@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import {
-  Router,
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot,
+  ActivatedRouteSnapshot, Resolve,
+  RouterStateSnapshot
 } from '@angular/router';
-import { first, Observable, of, tap, map } from 'rxjs';
-import { DrhsService } from '../drhs/drhs.service';
+import { map, Observable, of } from 'rxjs';
 import { Drh } from 'src/app/_shared/models/Drh';
-import { ThisReceiver } from '@angular/compiler';
+import { DrhsService } from '../drhs/drhs.service';
 
 @Injectable({
   providedIn: 'root',

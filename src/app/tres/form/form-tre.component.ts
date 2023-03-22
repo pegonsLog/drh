@@ -31,6 +31,7 @@ export class FormTreComponent implements OnDestroy {
     this.user = this.route.snapshot.queryParams['user'];
     this.name = this.route.snapshot.queryParams['name'];
     this.role = this.route.snapshot.queryParams['role'];
+    this.tre = this.route.snapshot.data['tre'];
     if (this.user) {
       this.tre.registration = this.route.snapshot.queryParams['user'];
     }

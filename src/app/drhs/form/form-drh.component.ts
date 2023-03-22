@@ -38,24 +38,20 @@ export class FormDrhComponent implements OnDestroy {
   }
 
   onSubmit(drh: Drh) {
-    this.subscription = this.drhsService.save(drh).subscribe(() => {
-      
-      this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
-        queryParams: {
-          user: this.user,
-          name: this.name,
-          role: this.role
-        },
-      })
-    })
-    alert('Drh incluído com sucesso!');
     this.clear();
-}
+    if (this.drh.id !== 0) {
+      this.update(drh);
+      alert('Drh alterado com sucesso!');
+    } else {
+      this.new(drh);
+      alert('Drh incluído com sucesso!');
+    }
+  }
 
   voltar() {
     this.location.back();
   }
-  
+
   clear() {
     this.drh.period = '';
     this.drh.date = '';
@@ -63,5 +59,33 @@ export class FormDrhComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  new(drh: Drh) {
+    this.subscription = this.drhsService.save(drh).subscribe(() => {
+      if (!this.drh.id) {
+        this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
+          queryParams: {
+            user: this.user,
+            name: this.name,
+            role: this.role,
+          },
+        });
+      }
+    });
+  }
+
+  update(drh: Drh) {
+    this.subscription = this.drhsService.update(drh).subscribe(() => {
+      if (this.drh.id) {
+        this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
+          queryParams: {
+            user: this.user,
+            name: this.name,
+            role: this.role,
+          },
+        });
+      }
+    });
   }
 }

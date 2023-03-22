@@ -38,7 +38,7 @@ export class DrhsService {
     return this.http.post<Drh>(this.API, drh);
   }
 
-  Update(drh: Drh): Observable<Drh> {
+  update(drh: Drh): Observable<Drh> {
     return this.http.put<Drh>(this.API, drh);
   }
 }

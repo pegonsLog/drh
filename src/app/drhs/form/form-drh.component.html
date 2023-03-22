@@ -1,6 +1,11 @@
 <mat-card>
   <mat-card-content>
-    <mat-toolbar color="primary" id="peso-fonte">Adicionar DRH</mat-toolbar>
+    <ng-container *ngIf="drh.id === 0; else update">
+      <mat-toolbar color="primary" id="peso-fonte">Adicionar DRH</mat-toolbar>
+    </ng-container>
+    <ng-template #update>
+      <mat-toolbar color="primary" id="peso-fonte">Alterar DRH</mat-toolbar>
+    </ng-template>
 
     <mat-form-field class="full-width">
       <input
@@ -31,7 +36,12 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button id="button-drh" (click)="onSubmit(drh)" name="user" mat-raised-button>
+    <button
+      id="button-drh"
+      (click)="onSubmit(drh)"
+      name="user"
+      mat-raised-button
+    >
       Salvar
     </button>
     <button type="button" mat-raised-button (click)="voltar()">Cancelar</button>
