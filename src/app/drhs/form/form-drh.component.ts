@@ -38,14 +38,12 @@ export class FormDrhComponent implements OnDestroy {
   }
 
   onSubmit(drh: Drh) {
-    this.clear();
     if (this.drh.id !== 0) {
       this.update(drh);
-      alert('Drh alterado com sucesso!');
     } else {
       this.new(drh);
-      alert('Drh incluído com sucesso!');
     }
+    this.clear();
   }
 
   voltar() {
@@ -57,35 +55,20 @@ export class FormDrhComponent implements OnDestroy {
     this.drh.date = '';
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   new(drh: Drh) {
     this.subscription = this.drhsService.save(drh).subscribe(() => {
       if (!this.drh.id) {
-        this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
-          queryParams: {
-            user: this.user,
-            name: this.name,
-            role: this.role,
-          },
-        });
+        this.location.back();
       }
     });
   }
 
   update(drh: Drh) {
-    this.subscription = this.drhsService.update(drh).subscribe(() => {
-      if (this.drh.id) {
-        this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
-          queryParams: {
-            user: this.user,
-            name: this.name,
-            role: this.role,
-          },
-        });
-      }
-    });
+    this.subscription = this.drhsService.update(drh).subscribe();
+    this.location.back();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,34 +1,57 @@
 <mat-card>
   <mat-card-content>
-    <mat-toolbar color="primary" id="peso-fonte"
-      >Adicionar USUÁRIO</mat-toolbar
+    <ng-container *ngIf="userParam.id === 0; else update">
+      <mat-toolbar color="primary" id="peso-fonte"
+        >Adicionar Usuário</mat-toolbar
+      >
+    </ng-container>
+    <ng-template #update>
+      <mat-toolbar color="primary" id="peso-fonte">Alterar Usuário</mat-toolbar>
+    </ng-template>
+
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Usuário"
+        name="user"
+        [(ngModel)]="userParam.user"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Nome"
+        name="name"
+        [(ngModel)]="userParam.name"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Senha"
+        name="password"
+        [(ngModel)]="userParam.password"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="status"
+        name="role"
+        [(ngModel)]="userParam.role"
+      />
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      id="button-salvar"
+      (click)="onSubmit(userParam)"
+      name="user"
+      mat-raised-button
     >
-
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Usuário" name="user" [(ngModel)]="userParam.user"/>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Nome" name="name" [(ngModel)]="userParam.name"/>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Senha" name="password" [(ngModel)]="userParam.password"/>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput placeholder="status" name="role" [(ngModel)]="userParam.role"/>
-      </mat-form-field>
-    </mat-card-content>
-
-      <mat-card-actions>
-        <button
-          id="button-salvar"
-          (click)="onSubmit(userParam)"
-          name="user"
-          mat-raised-button
-        >
-         Salvar
-        </button>
-        <button type="button" mat-raised-button (click)="voltar()">
-          Cancelar
-        </button>
-      </mat-card-actions>
+      Salvar
+    </button>
+    <button type="button" mat-raised-button (click)="voltar()">Cancelar</button>
+  </mat-card-actions>
 </mat-card>

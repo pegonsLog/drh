@@ -7,7 +7,7 @@ import { ListUsersComponent } from './list/list-users.component';
 const routes: Routes = [
   {path: '', component: ListUsersComponent},
   {path: 'new9dkj%&kkh7898&8(jjj$5', component: FormUserComponent, resolve: {user: UserResolver}},
-  {path: 'edit/:id', component: FormUserComponent, resolve: {tre: UserResolver}}
+  {path: 'edit/:id', component: FormUserComponent, resolve: {user: UserResolver}}
 ];
 
 @NgModule({

@@ -8,16 +8,15 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-form-user',
   templateUrl: './form-user.component.html',
-  styleUrls: ['./form-user.component.scss']
+  styleUrls: ['./form-user.component.scss'],
 })
 export class FormUserComponent implements OnDestroy {
-
   userParam: User = {
     id: 0,
     user: '',
     name: '',
     password: '',
-    role: ''
+    role: '',
   };
 
   subscription: Subscription = new Subscription();
@@ -28,17 +27,24 @@ export class FormUserComponent implements OnDestroy {
     private router: Router,
     private location: Location
   ) {
-    if(this.route.snapshot.queryParams['user']){
+    this.userParam = this.route.snapshot.data['user'];
+
+    if (this.route.snapshot.queryParams['user']) {
       this.userParam.user = this.route.snapshot.queryParams['user'];
     }
   }
 
   onSubmit(user: User) {
-    this.subscription = this.usersService.save(user).subscribe(() => {
-      this.router.navigate(['/users']);
-    });
-    alert('Usuário incluído com sucesso!');
+    if (this.userParam.id !== 0) {
+      this.update(user);
+    } else {
+      this.new(user);
+    }
     this.clear();
+  }
+
+  voltar() {
+    this.location.back();
   }
 
   clear() {
@@ -48,10 +54,19 @@ export class FormUserComponent implements OnDestroy {
     this.userParam.role = '';
   }
 
-  voltar() {
+  new(user: User) {
+    this.subscription = this.usersService.save(user).subscribe(() => {
+      if (!this.userParam.id) {
+        this.location.back();
+      }
+    });
+  }
+
+  update(user: User) {
+    this.subscription = this.usersService.update(user).subscribe();
     this.location.back();
   }
- 
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

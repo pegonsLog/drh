@@ -14,12 +14,7 @@ import { DrhsService } from '../drhs.service';
 })
 export class ListAdmDrhsComponent implements OnDestroy {
   list$: Observable<any>;
-  drh: Drh = {
-    id: 0,
-    registration: '',
-    period: '',
-    date: '',
-  };
+
   matricula: string;
   role: string;
   name: string;
@@ -65,11 +60,6 @@ export class ListAdmDrhsComponent implements OnDestroy {
     });
   }
 
-  onEdit(id: number) {
-    this.router.navigate(['drhs/edit', id], {
-      queryParams: { role: this.role, user: this.matricula, name: this.name },
-    });
-  }
 
   onUsers() {
     this.router.navigate(['/users']);

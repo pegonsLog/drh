@@ -15,9 +15,16 @@ import { ConfirmationDialogComponent } from 'src/app/_shared/dialogs/confirmatio
 export class ListUsersComponent implements OnDestroy {
   list$: Observable<any>;
 
+  user: User = {
+    id: 0,
+    user: '',
+    name: '',
+    password: '',
+    role: ''
+  };
+
   displayedColumns: string[] = ['name', 'password', 'role', 'actions'];
   role: string;
-  user: string;
 
   subscription: Subscription = new Subscription();
 

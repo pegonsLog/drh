@@ -16,12 +16,11 @@ export class UserResolver implements Resolve<User> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User>{
     if (route.params && route.params['id']) {
-      const id: number = route.params['id'];
       return this.usersService
-      .findOne(id)
-      .pipe(map((user: User) => user));
+        .findOne(route.params['id'])
+        .pipe(map((user: User) => user));
+     }
 
-    }
-      return of(this.user);
+    return of(this.user);
   }
 }

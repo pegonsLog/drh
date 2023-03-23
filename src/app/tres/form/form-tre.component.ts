@@ -38,16 +38,11 @@ export class FormTreComponent implements OnDestroy {
   }
 
   onSubmit(tre: Tre) {
-    this.subscription = this.tresService.save(tre).subscribe(() => {
-      this.router.navigate(['/tres/adm5Ft76#$78&8uio&8)#80976'], {
-        queryParams: {
-          user: this.user,
-          name: this.name,
-          role: this.role,
-        },
-      });
-    });
-    alert('Tre incluído com sucesso!');
+    if (this.tre.id !== 0) {
+      this.update(tre);
+    } else {
+      this.new(tre);
+    }
     this.clear();
   }
 
@@ -57,6 +52,19 @@ export class FormTreComponent implements OnDestroy {
   }
 
   voltar() {
+    this.location.back();
+  }
+
+  new(tre: Tre) {
+    this.subscription = this.tresService.save(tre).subscribe(() => {
+      if (!this.tre.id) {
+        this.location.back();
+      }
+    });
+  }
+
+  update(tre: Tre) {
+    this.subscription = this.tresService.update(tre).subscribe();
     this.location.back();
   }
 

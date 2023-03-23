@@ -39,6 +39,6 @@ export class DrhsService {
   }
 
   update(drh: Drh): Observable<Drh> {
-    return this.http.put<Drh>(this.API, drh);
+    return this.http.put<Drh>(`${this.API}/${drh.id}`, drh);
   }
 }

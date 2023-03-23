@@ -40,6 +40,6 @@ export class TresService {
   }
 
   update(tre: Tre): Observable<Tre> {
-    return this.http.put<Tre>(this.API, tre);
+    return this.http.put<Tre>(`${this.API}/${tre.id}`, tre);
   }
 }

@@ -30,12 +30,16 @@ export class UsersService {
       })
     );
   }
-    
+
   delete(id: number) {
     return this.http.delete<User>(`${this.API}/${id}`);
   }
-  
+
   save(user: User): Observable<User> {
     return this.http.post<User>(this.API, user);
+  }
+
+  update(user: User): Observable<User> {
+    return this.http.put<User>(`${this.API}/${user.id}`, user);
   }
 }
