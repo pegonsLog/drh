@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Tre } from 'src/app/_shared/models/Tre';
 import { TresService } from '../tres.service';
 
@@ -39,9 +39,9 @@ export class FormTreComponent implements OnDestroy {
 
   onSubmit(tre: Tre) {
     if (this.tre.id !== 0) {
-      this.update(tre);
+      this.subscription = this.update(tre).subscribe(arg => {this.location.back()});
     } else {
-      this.new(tre);
+      this.subscription = this.new(tre).subscribe(arg => {this.location.back()});
     }
     this.clear();
   }
@@ -55,17 +55,12 @@ export class FormTreComponent implements OnDestroy {
     this.location.back();
   }
 
-  new(tre: Tre) {
-    this.subscription = this.tresService.save(tre).subscribe(() => {
-      if (!this.tre.id) {
-        this.location.back();
-      }
-    });
+  new(tre: Tre): Observable<Tre> {
+   return this.tresService.save(tre);
   }
 
-  update(tre: Tre) {
-    this.subscription = this.tresService.update(tre).subscribe();
-    this.location.back();
+  update(tre: Tre): Observable<Tre> {
+  return this.tresService.update(tre);
   }
 
   ngOnDestroy(): void {

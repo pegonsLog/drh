@@ -15,7 +15,14 @@ import { ListUsersDrhsComponent } from './list-user/list-user-drhs.component';
     ListUsersDrhsComponent,
     ListAdmDrhsComponent,
   ],
-  imports: [CommonModule, DrhsRoutingModule, AngularMaterialModule, FormsModule, ConfirmationModule],
+  imports: [
+    CommonModule,
+    DrhsRoutingModule,
+    AngularMaterialModule,
+    FormsModule,
+    ConfirmationModule,
+
+  ],
   exports: [FormDrhComponent, ListUsersDrhsComponent, ListAdmDrhsComponent],
   providers: [],
 })

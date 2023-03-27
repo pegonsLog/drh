@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable, Subscription } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Drh } from 'src/app/_shared/models/Drh';
 import { DrhsService } from '../drhs.service';
 

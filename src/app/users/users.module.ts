@@ -6,6 +6,7 @@ import { FormUserComponent } from './form/form-user.component';
 import { ListUsersComponent } from './list/list-users.component';
 import { AngularMaterialModule } from '../_shared/angular-material/angular-material.module';
 import { FormsModule } from '@angular/forms';
+import { IMaskModule } from 'angular-imask';
 
 @NgModule({
   declarations: [ListUsersComponent, FormUserComponent],

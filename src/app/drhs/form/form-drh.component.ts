@@ -3,7 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Drh } from 'src/app/_shared/models/Drh';
 import { DrhsService } from '../drhs.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-drh',
@@ -19,8 +19,9 @@ export class FormDrhComponent implements OnDestroy {
     id: 0,
     registration: '',
     period: '',
-    date: '',
+    date: ''
   };
+  dateMask = { mask: "99/99/9999" };
 
   constructor(
     private drhsService: DrhsService,
@@ -39,11 +40,14 @@ export class FormDrhComponent implements OnDestroy {
 
   onSubmit(drh: Drh) {
     if (this.drh.id !== 0) {
-      this.update(drh);
+      this.subscription = this.update(drh).subscribe(() => {
+        this.location.back();
+      });
     } else {
-      this.new(drh);
+      this.subscription = this.new(drh).subscribe(() => {
+        this.location.back();
+      });
     }
-    this.clear();
   }
 
   voltar() {
@@ -52,20 +56,15 @@ export class FormDrhComponent implements OnDestroy {
 
   clear() {
     this.drh.period = '';
-    this.drh.date = '';
+    this.drh.date =  '';
   }
 
-  new(drh: Drh) {
-    this.subscription = this.drhsService.save(drh).subscribe(() => {
-      if (!this.drh.id) {
-        this.location.back();
-      }
-    });
+  new(drh: Drh): Observable<Drh>  {
+    return this.drhsService.save(drh);
   }
 
-  update(drh: Drh) {
-    this.subscription = this.drhsService.update(drh).subscribe();
-    this.location.back();
+  update(drh: Drh): Observable<Drh> {
+    return this.drhsService.update(drh);
   }
 
   ngOnDestroy(): void {

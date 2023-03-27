@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/_shared/models/User';
 import { UsersService } from '../users.service';
 import { Location } from '@angular/common';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form-user',
@@ -36,9 +36,13 @@ export class FormUserComponent implements OnDestroy {
 
   onSubmit(user: User) {
     if (this.userParam.id !== 0) {
-      this.update(user);
+      this.subscription = this.update(user).subscribe(() => {
+        this.location.back();
+      });
     } else {
-      this.new(user);
+      this.subscription = this.new(user).subscribe(() => {
+        this.location.back();
+      });
     }
     this.clear();
   }
@@ -54,17 +58,12 @@ export class FormUserComponent implements OnDestroy {
     this.userParam.role = '';
   }
 
-  new(user: User) {
-    this.subscription = this.usersService.save(user).subscribe(() => {
-      if (!this.userParam.id) {
-        this.location.back();
-      }
-    });
+  new(user: User): Observable<User> {
+    return this.usersService.save(user);
   }
 
-  update(user: User) {
-    this.subscription = this.usersService.update(user).subscribe();
-    this.location.back();
+  update(user: User): Observable<User> {
+    return this.usersService.update(user);
   }
 
   ngOnDestroy(): void {
