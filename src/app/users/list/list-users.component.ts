@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, Subscription } from 'rxjs';
 import { UsersService } from '../users.service';
@@ -6,6 +6,8 @@ import { Location } from '@angular/common';
 import { User } from 'src/app/_shared/models/User';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/_shared/dialogs/confirmation/confirmation.component';
+import { collection, Firestore } from 'firebase/firestore';
+import { collectionData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-list-users',

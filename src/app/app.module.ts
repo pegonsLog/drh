@@ -11,6 +11,10 @@ import { DrhsModule } from './drhs/drhs.module';
 import { LoginModule } from './login/login.module';
 import { TresModule } from './tres/tres.module';
 import { UsersModule } from './users/users.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +29,9 @@ import { UsersModule } from './users/users.module';
     TresModule,
     HttpClientModule,
     AdministrationModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
 
   ],
   providers: [],

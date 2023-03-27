@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "drh-tre-garbo-4b949": {
+      "hosting": {
+        "drh": [
+          "drh-tre-garbo-4b949"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "drh-tre-garbo-4b949"
+  }
+}

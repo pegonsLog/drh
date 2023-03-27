@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Drh } from 'src/app/_shared/models/Drh';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DrhsService {
-  private readonly API = 'http://localhost:3000/drhs';
+  private readonly API = `${environment.API}drhs`;
 
   constructor(private http: HttpClient) {}
 
