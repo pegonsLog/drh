@@ -35,7 +35,7 @@ export class ListAdmDrhsComponent implements OnDestroy {
     this.name = this.route.snapshot.queryParams['name'];
 
     this.list$ = this.drhsService
-      .listDrh()
+      .list()
       .pipe(
         map((drhs: Drh[]) =>
           drhs.filter((drh: any) => drh.registration === this.matricula)
@@ -86,7 +86,7 @@ export class ListAdmDrhsComponent implements OnDestroy {
 
   updateList() {
     this.list$ = this.drhsService
-      .listDrh()
+      .list()
       .pipe(
         map((drhs: Drh[]) =>
           drhs.filter((drh: any) => drh.registration === this.matricula)

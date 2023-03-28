@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { collection, DocumentData, getDocs, getFirestore } from 'firebase/firestore';
 import { map, Observable } from 'rxjs';
 import { Drh } from 'src/app/_shared/models/Drh';
 import { environment } from 'src/environments/environment';
@@ -8,12 +10,31 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class DrhsService {
+
+  app = initializeApp(environment.firebase);
+  db = getFirestore(this.app);
+
   private readonly API = `${environment.API}drhs`;
 
   constructor(private http: HttpClient) {}
 
-  listDrh(): Observable<Drh[]> {
-    return this.http.get<Drh[]>(this.API);
+  // listDrh(): Observable<Drh[]> {
+  //   return this.http.get<Drh[]>(this.API);
+  // }
+
+  list(): Observable<Drh[]> {
+    const drhs = collection(this.db, 'drhs');
+    return new Observable<DocumentData[]>((subscriber) => {
+      getDocs(drhs)
+        .then((drhsSnapshot) => {
+          const drhsList = drhsSnapshot.docs.map((doc) => doc.data());
+          subscriber.next(drhsList);
+          subscriber.complete();
+        })
+        .catch((error) => {
+          subscriber.error(error);
+        });
+    }).pipe(map((drhsList) => drhsList as Drh[]));
   }
 
   findOne(id: number): Observable<Drh> {

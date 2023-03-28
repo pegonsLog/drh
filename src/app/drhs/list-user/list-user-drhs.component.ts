@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Drh } from 'src/app/_shared/models/Drh';
@@ -10,7 +10,7 @@ import { DrhsService } from '../drhs.service';
   templateUrl: './list-user-drhs.component.html',
   styleUrls: ['./list-user-drhs.component.scss'],
 })
-export class ListUsersDrhsComponent {
+export class ListUsersDrhsComponent implements OnInit{
   list$: Observable<any>;
   matricula: string;
   displayedColumns: string[] = ['period', 'date'];
@@ -24,7 +24,7 @@ export class ListUsersDrhsComponent {
     this.matricula = this.route.snapshot.queryParams['user'];
 
     this.list$ = this.drhsService
-      .listDrh()
+      .list()
       .pipe(
         map((drhs: Drh[]) =>
           drhs.filter((drh: any) => drh.registration === this.matricula)
@@ -33,5 +33,9 @@ export class ListUsersDrhsComponent {
   }
   voltar(){
   this.location.back();
+  }
+
+  ngOnInit(): void {
+      console.log(this.list$);
   }
 }

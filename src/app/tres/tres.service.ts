@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { collection, DocumentData, getDocs, getFirestore } from 'firebase/firestore';
 import { map, Observable } from 'rxjs';
 import { Tre } from 'src/app/_shared/models/Tre';
 import { environment } from 'src/environments/environment';
@@ -9,12 +11,32 @@ import { environment } from 'src/environments/environment';
 })
 export class TresService {
 
+
+  app = initializeApp(environment.firebase);
+  db = getFirestore(this.app);
+
   private readonly API = `${environment.API}tres`;
 
   constructor(private http: HttpClient) { }
 
-  list(): Observable<Tre[]>{
-    return this.http.get<Tre[]>(this.API);
+  // list(): Observable<Tre[]>{
+  //   return this.http.get<Tre[]>(this.API);
+  // }
+
+
+  list(): Observable<Tre[]> {
+    const tres = collection(this.db, 'tres');
+    return new Observable<DocumentData[]>((subscriber) => {
+      getDocs(tres)
+        .then((tresSnapshot) => {
+          const tresList = tresSnapshot.docs.map((doc) => doc.data());
+          subscriber.next(tresList);
+          subscriber.complete();
+        })
+        .catch((error) => {
+          subscriber.error(error);
+        });
+    }).pipe(map((tresList) => tresList as Tre[]));
   }
 
   findOne(id: number): Observable<Tre> {
