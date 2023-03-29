@@ -20,7 +20,7 @@ import { ListUsersDrhsComponent } from './list-user/list-user-drhs.component';
     DrhsRoutingModule,
     AngularMaterialModule,
     FormsModule,
-    ConfirmationModule,
+    ConfirmationModule
 
   ],
   exports: [FormDrhComponent, ListUsersDrhsComponent, ListAdmDrhsComponent],

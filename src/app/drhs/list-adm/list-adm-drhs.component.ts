@@ -7,7 +7,6 @@ import { ConfirmationDialogComponent } from 'src/app/_shared/dialogs/confirmatio
 import { Drh } from 'src/app/_shared/models/Drh';
 import { DrhsService } from '../drhs.service';
 
-
 @Component({
   selector: 'app-list-adm-drhs',
   templateUrl: './list-adm-drhs.component.html',
@@ -61,7 +60,6 @@ export class ListAdmDrhsComponent implements OnDestroy {
     });
   }
 
-
   onUsers() {
     this.router.navigate(['/users']);
   }
@@ -70,22 +68,22 @@ export class ListAdmDrhsComponent implements OnDestroy {
     this.router.navigate(['/drhs/edit', id]);
   }
 
-  delete(id: number) {
+  delete(drh: Drh) {
     const dialogReference = this.dialog.open(ConfirmationDialogComponent);
     this.subscription = dialogReference
       .afterClosed()
       .subscribe((result: any) => {
         if (result) {
-          this.drhsService.delete(id).subscribe((result) => {
-            this.updateList();
-            this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356']);
-          });
+          this.drhsService.delete(drh);
+          // this.updateList();
+          console.log(drh);
+          this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356']);
         }
       });
   }
 
   updateList() {
-    this.list$ = this.drhsService
+   this.drhsService
       .list()
       .pipe(
         map((drhs: Drh[]) =>

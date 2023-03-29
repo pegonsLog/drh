@@ -1,18 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { collection, DocumentData, getDocs, getFirestore } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  DocumentData,
+  getDocs,
+  getFirestore,
+} from 'firebase/firestore';
 import { map, Observable } from 'rxjs';
 import { Drh } from 'src/app/_shared/models/Drh';
 import { environment } from 'src/environments/environment';
+import { doc, setDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DrhsService {
-
   app = initializeApp(environment.firebase);
   db = getFirestore(this.app);
+
+  drh: Drh = {
+    id: 0,
+    registration: '',
+    period: '',
+    date: '',
+  };
 
   private readonly API = `${environment.API}drhs`;
 
@@ -52,17 +66,23 @@ export class DrhsService {
     );
   }
 
-  delete(id: number): Observable<Drh> {
-    return this.http.delete<Drh>(`${this.API}/${id}`);
+  async delete(drh: Drh) {
+    await deleteDoc(doc(this.db, 'drhs', ''));
   }
 
-  save(drh: Drh): Observable<Drh> {
-    return this.http.post<Drh>(this.API, drh);
+  // save(drh: Drh): Observable<Drh> {
+  //   return this.http.post<Drh>(this.API, drh);
+  // }
+
+  async save(drh: Drh) {
+    await addDoc(collection(this.db, 'drhs'), {
+      registration: drh.registration,
+      period: drh.period,
+      date: drh.date,
+    });
   }
 
   update(drh: Drh): Observable<Drh> {
-    return this.http
-      .put<Drh>(`${this.API}/${drh.id}`, drh)
-      .pipe();
+    return this.http.put<Drh>(`${this.API}/${drh.id}`, drh).pipe();
   }
 }

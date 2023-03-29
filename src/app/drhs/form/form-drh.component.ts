@@ -19,9 +19,9 @@ export class FormDrhComponent implements OnDestroy {
     id: 0,
     registration: '',
     period: '',
-    date: ''
+    date: '',
   };
-  dateMask = { mask: "99/99/9999" };
+  dateMask = { mask: '99/99/9999' };
 
   constructor(
     private drhsService: DrhsService,
@@ -44,9 +44,8 @@ export class FormDrhComponent implements OnDestroy {
         this.location.back();
       });
     } else {
-      this.subscription = this.new(drh).subscribe(() => {
-        this.location.back();
-      });
+      this.drhsService.save(drh);
+      this.location.back();
     }
   }
 
@@ -56,12 +55,12 @@ export class FormDrhComponent implements OnDestroy {
 
   clear() {
     this.drh.period = '';
-    this.drh.date =  '';
+    this.drh.date = '';
   }
 
-  new(drh: Drh): Observable<Drh>  {
-    return this.drhsService.save(drh);
-  }
+  // new(drh: Drh): Observable<Drh>  {
+  //   return this.drhsService.save(drh);
+  // }
 
   update(drh: Drh): Observable<Drh> {
     return this.drhsService.update(drh);

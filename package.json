@@ -26,6 +26,7 @@
     "angular2-text-mask": "^9.0.0",
     "bootstrap": "^5.2.3",
     "firebase": "^9.18.0",
+    "firebase-cli": "^1.2.0",
     "json-server": "^0.17.2",
     "material-icons": "^1.13.2",
     "ngx-mask": "^15.1.0",
