@@ -1,20 +1,18 @@
 import { Location } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Drh } from 'src/app/_shared/models/Drh';
 import { DrhsService } from '../drhs.service';
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-drh',
   templateUrl: './form-drh.component.html',
   styleUrls: ['./form-drh.component.scss'],
 })
-export class FormDrhComponent implements OnDestroy {
+export class FormDrhComponent {
   role: string;
   user: string;
   name: string;
-  subscription: Subscription = new Subscription();
   drh: Drh = {
     id: '',
     registration: '',
@@ -38,17 +36,6 @@ export class FormDrhComponent implements OnDestroy {
     }
   }
 
-  onSubmit(drh: Drh) {
-    this.drhsService
-      .addDrh(drh)
-      .then((data) => {
-        console.log(data)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   voltar() {
     this.location.back();
   }
@@ -58,15 +45,30 @@ export class FormDrhComponent implements OnDestroy {
     this.drh.date = '';
   }
 
-  // new(drh: Drh): Observable<Drh>  {
-  //   return this.drhsService.save(drh);
-  // }
+  onNew(drh: Drh) {
+    this.drhsService
+      .addDrh(drh)
+      .then(() => {
+        this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
+          queryParams: { role: this.role, user: this.user, name: this.name },
+        });
+        this.clear();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-  // update(drh: Drh): Observable<Drh> {
-  //   //return this.drhsService.update(drh);
-  // }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  onUpdate(id: string, drh: Drh) {
+    this.drhsService
+    .update(drh, id)
+    .then(() => {
+      this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
+        queryParams: { role: this.role, user: this.user, name: this.name },
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 }

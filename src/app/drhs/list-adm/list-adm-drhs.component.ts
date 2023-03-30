@@ -74,14 +74,20 @@ export class ListAdmDrhsComponent implements OnDestroy {
       .afterClosed()
       .subscribe((result: any) => {
         if (result) {
-          this.drhsService.delete(id);
-          this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356']);
+          this.drhsService
+            .delete(id)
+            .then(() => {
+              this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356']);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       });
   }
 
   updateList() {
-   this.drhsService
+    this.drhsService
       .list()
       .pipe(
         map((drhs: Drh[]) =>

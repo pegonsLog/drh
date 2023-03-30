@@ -34,14 +34,26 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button
-      type="button"
-      id="button-drh"
-      (click)="onSubmit(drh)"
-      mat-raised-button
-    >
-      Salvar
-    </button>
+    <ng-container *ngIf="drh.id === ''; else update_button">
+      <button
+        type="button"
+        id="button-drh"
+        (click)="onNew(drh)"
+        mat-raised-button
+      >
+        Salvar
+      </button>
+    </ng-container>
+    <ng-template #update_button>
+      <button
+        type="button"
+        id="button-drh"
+        (click)="onUpdate(drh.id, drh)"
+        mat-raised-button
+      >
+        Salvar
+      </button>
+    </ng-template>
     <button type="button" mat-raised-button (click)="voltar()">Cancelar</button>
   </mat-card-actions>
 </mat-card>
