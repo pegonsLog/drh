@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <ng-container *ngIf="tre.id === 0; else update">
+    <ng-container *ngIf="tre.id === ''; else update">
       <mat-toolbar color="primary" id="peso-fonte">Adicionar TRE</mat-toolbar>
     </ng-container>
     <ng-template #update>

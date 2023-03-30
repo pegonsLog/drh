@@ -16,7 +16,7 @@ export class FormDrhComponent implements OnDestroy {
   name: string;
   subscription: Subscription = new Subscription();
   drh: Drh = {
-    id: 0,
+    id: '',
     registration: '',
     period: '',
     date: '',
@@ -39,14 +39,14 @@ export class FormDrhComponent implements OnDestroy {
   }
 
   onSubmit(drh: Drh) {
-    if (this.drh.id !== 0) {
-      this.subscription = this.update(drh).subscribe(() => {
-        this.location.back();
+    this.drhsService
+      .addDrh(drh)
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    } else {
-      this.drhsService.save(drh);
-      this.location.back();
-    }
   }
 
   voltar() {
@@ -62,9 +62,9 @@ export class FormDrhComponent implements OnDestroy {
   //   return this.drhsService.save(drh);
   // }
 
-  update(drh: Drh): Observable<Drh> {
-    return this.drhsService.update(drh);
-  }
+  // update(drh: Drh): Observable<Drh> {
+  //   //return this.drhsService.update(drh);
+  // }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

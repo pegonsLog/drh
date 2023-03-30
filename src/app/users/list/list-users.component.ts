@@ -18,11 +18,11 @@ export class ListUsersComponent implements OnDestroy {
   list$: Observable<any>;
 
   user: User = {
-    id: 0,
+    id: '',
     user: '',
     name: '',
     password: '',
-    role: ''
+    role: '',
   };
 
   displayedColumns: string[] = ['name', 'password', 'role', 'actions'];

@@ -17,12 +17,10 @@ export class AuthService {
   app = initializeApp(environment.firebase);
   db = getFirestore(this.app);
 
-  private readonly API = `${environment.API}users`;
-
   users: User[] = [];
   role: string = '';
   user: User = {
-    id: 0,
+    id: '',
     user: '',
     name: '',
     password: '',

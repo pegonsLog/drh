@@ -1,6 +1,6 @@
 export interface Tre {
-  id: number,
-  registration: string
-  year: string,
-  date: string,
+  id: string,
+  registration?: string
+  year?: string,
+  date?: string,
 }

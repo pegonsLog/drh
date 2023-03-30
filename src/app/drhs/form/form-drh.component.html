@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <ng-container *ngIf="drh.id === 0; else update">
+    <ng-container *ngIf="drh.id === ''; else update">
       <mat-toolbar color="primary" id="peso-fonte">Adicionar DRH</mat-toolbar>
     </ng-container>
     <ng-template #update>

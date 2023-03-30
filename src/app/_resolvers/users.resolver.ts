@@ -11,7 +11,7 @@ import { UsersService } from '../users/users.service';
   providedIn: 'root',
 })
 export class UserResolver implements Resolve<User> {
-  user: User = { id: 0, user: '', name: '', password: '', role: ''};
+  user: User = { id: '', user: '', name: '', password: '', role: ''};
   constructor(private usersService: UsersService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User>{

@@ -62,7 +62,7 @@ export class ListAdmTresComponent implements OnDestroy {
     this.router.navigate(['/tres/edit', id]);
   }
 
-  delete(id: number) {
+  delete(id: string) {
     const dialogReference = this.dialog.open(ConfirmationDialogComponent);
     this.subscription = dialogReference
       .afterClosed()

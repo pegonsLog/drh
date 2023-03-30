@@ -14,7 +14,7 @@ export class LoginComponent implements OnDestroy {
   user: string = '';
   password: string = '';
   userAuth: User = {
-    id: 0,
+    id: '',
     user: '',
     name: '',
     password: '',

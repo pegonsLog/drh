@@ -1,6 +1,6 @@
 export interface Drh {
-  id: number,
-  registration: string
-  period: string,
-  date: string,
+  id: string,
+  registration?: string
+  period?: string,
+  date?: string,
 }

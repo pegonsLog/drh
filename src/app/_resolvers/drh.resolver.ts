@@ -12,7 +12,7 @@ import { Drh } from './../_shared/models/Drh';
   providedIn: 'root',
 })
 export class DrhResolver implements Resolve<Drh> {
-  drh: Drh = { id: 0, registration: '', period: '', date: '' };
+  drh: Drh = { id: '', registration: '', period: '', date: '' };
   constructor(private drhsService: DrhsService) {}
 
   resolve(

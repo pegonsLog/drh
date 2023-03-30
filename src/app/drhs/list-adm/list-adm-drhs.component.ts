@@ -64,19 +64,17 @@ export class ListAdmDrhsComponent implements OnDestroy {
     this.router.navigate(['/users']);
   }
 
-  edit(id: number) {
+  edit(id: string) {
     this.router.navigate(['/drhs/edit', id]);
   }
 
-  delete(drh: Drh) {
+  delete(id: string) {
     const dialogReference = this.dialog.open(ConfirmationDialogComponent);
     this.subscription = dialogReference
       .afterClosed()
       .subscribe((result: any) => {
         if (result) {
-          this.drhsService.delete(drh);
-          // this.updateList();
-          console.log(drh);
+          this.drhsService.delete(id);
           this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356']);
         }
       });

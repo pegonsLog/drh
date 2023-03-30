@@ -12,7 +12,7 @@ import { TresService } from '../tres/tres.service';
   providedIn: 'root',
 })
 export class TreResolver implements Resolve<Tre> {
-  tre: Tre = { id: 0, registration: '', year: '', date: '' };
+  tre: Tre = { id: '', registration: '', year: '', date: '' };
   constructor(private tresService: TresService) {}
 
   resolve(

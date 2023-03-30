@@ -12,7 +12,7 @@ import { Subscription, Observable } from 'rxjs';
 })
 export class FormUserComponent implements OnDestroy {
   userParam: User = {
-    id: 0,
+    id: '',
     user: '',
     name: '',
     password: '',
@@ -35,7 +35,7 @@ export class FormUserComponent implements OnDestroy {
   }
 
   onSubmit(user: User) {
-    if (this.userParam.id !== 0) {
+    if (this.userParam.id !== '') {
       this.subscription = this.update(user).subscribe(() => {
         this.location.back();
       });

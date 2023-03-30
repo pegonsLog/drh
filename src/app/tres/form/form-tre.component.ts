@@ -17,7 +17,7 @@ export class FormTreComponent implements OnDestroy {
   subscription: Subscription = new Subscription();
 
   tre: Tre = {
-    id: 0,
+    id: '',
     registration: '',
     year: '',
     date: '',
@@ -38,7 +38,7 @@ export class FormTreComponent implements OnDestroy {
   }
 
   onSubmit(tre: Tre) {
-    if (this.tre.id !== 0) {
+    if (this.tre.id !== '') {
       this.subscription = this.update(tre).subscribe(arg => {this.location.back()});
     } else {
       this.subscription = this.new(tre).subscribe(arg => {this.location.back()});
