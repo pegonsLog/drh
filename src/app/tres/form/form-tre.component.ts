@@ -1,7 +1,6 @@
 import { Location } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription, Observable } from 'rxjs';
 import { Tre } from 'src/app/_shared/models/Tre';
 import { TresService } from '../tres.service';
 
@@ -10,11 +9,10 @@ import { TresService } from '../tres.service';
   templateUrl: './form-tre.component.html',
   styleUrls: ['./form-tre.component.scss'],
 })
-export class FormTreComponent implements OnDestroy {
+export class FormTreComponent {
   role: string;
   user: string;
   name: string;
-  subscription: Subscription = new Subscription();
 
   tre: Tre = {
     id: '',
@@ -37,13 +35,8 @@ export class FormTreComponent implements OnDestroy {
     }
   }
 
-  onSubmit(tre: Tre) {
-    if (this.tre.id !== '') {
-      this.subscription = this.update(tre).subscribe(arg => {this.location.back()});
-    } else {
-      this.subscription = this.new(tre).subscribe(arg => {this.location.back()});
-    }
-    this.clear();
+  voltar() {
+    this.location.back();
   }
 
   clear() {
@@ -51,19 +44,30 @@ export class FormTreComponent implements OnDestroy {
     this.tre.date = '';
   }
 
-  voltar() {
-    this.location.back();
+  onNew(tre: Tre) {
+    this.tresService
+      .addTre(tre)
+      .then(() => {
+        this.router.navigate(['/tres/adm5Ft76#$78&8uio&8#80976'], {
+          queryParams: { role: this.role, user: this.user, name: this.name },
+        });
+        this.clear();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  new(tre: Tre): Observable<Tre> {
-   return this.tresService.save(tre);
-  }
-
-  update(tre: Tre): Observable<Tre> {
-  return this.tresService.update(tre);
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  onUpdate(id: string, tre: Tre) {
+    this.tresService
+      .update(tre, id)
+      .then(() => {
+        this.router.navigate(['/tres/adm5Ft76#$78&8uio&8#80976'], {
+          queryParams: { role: this.role, user: this.user, name: this.name },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }

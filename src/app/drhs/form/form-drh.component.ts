@@ -49,7 +49,7 @@ export class FormDrhComponent {
     this.drhsService
       .addDrh(drh)
       .then(() => {
-        this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
+        this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8#33356'], {
           queryParams: { role: this.role, user: this.user, name: this.name },
         });
         this.clear();
@@ -63,7 +63,7 @@ export class FormDrhComponent {
     this.drhsService
     .update(drh, id)
     .then(() => {
-      this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
+      this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8#33356'], {
         queryParams: { role: this.role, user: this.user, name: this.name },
       })
     })

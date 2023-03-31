@@ -34,14 +34,26 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button
-      id="button-salvar"
-      (click)="onSubmit(tre)"
-      name="user"
-      mat-raised-button
-    >
-      Salvar
-    </button>
+    <ng-container *ngIf="tre.id === ''; else update_button">
+      <button
+        type="button"
+        id="button-tre"
+        (click)="onNew(tre)"
+        mat-raised-button
+      >
+        Salvar
+      </button>
+    </ng-container>
+    <ng-template #update_button>
+      <button
+        type="button"
+        id="button-tre"
+        (click)="onUpdate(tre.id, tre)"
+        mat-raised-button
+      >
+        Salvar
+      </button>
+    </ng-template>
     <button type="button" mat-raised-button (click)="voltar()">Cancelar</button>
   </mat-card-actions>
 </mat-card>

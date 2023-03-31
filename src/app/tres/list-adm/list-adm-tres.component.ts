@@ -1,18 +1,17 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, Subscription } from 'rxjs';
+import { ConfirmationDialogComponent } from 'src/app/_shared/dialogs/confirmation/confirmation.component';
 import { Tre } from 'src/app/_shared/models/Tre';
 import { TresService } from '../tres.service';
-import { Location } from '@angular/common';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from 'src/app/_shared/dialogs/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-list-adm-tres',
   templateUrl: './list-adm-tres.component.html',
   styleUrls: ['./list-adm-tres.component.scss'],
 })
-export class ListAdmTresComponent implements OnDestroy {
+export class ListAdmTresComponent {
   list$: Observable<any>;
 
   matricula: string;
@@ -47,19 +46,26 @@ export class ListAdmTresComponent implements OnDestroy {
     });
   }
 
-  drh() {
-    this.router.navigate(['drhs/adm5Ft76#$78&8uio&8)#33356'], {
+  tre() {
+    this.router.navigate(['tres/adm5Ft76#$78&8uio&8#80976'], {
       queryParams: { role: this.role, user: this.matricula, name: this.name },
     });
   }
+
   onSave() {
-    this.router.navigate(['/tres/new'], {
-      queryParams: { role: this.role, user: this.matricula },
+    this.router.navigate(['tres/new'], {
+      queryParams: { role: this.role, user: this.matricula, name: this.name },
     });
   }
 
-  edit(id: number) {
-    this.router.navigate(['/tres/edit', id]);
+  onUsers() {
+    this.router.navigate(['/users']);
+  }
+
+  edit(id: string) {
+    this.router.navigate(['/tres/edit', id], {
+      queryParams: { role: this.role, user: this.matricula, name: this.name },
+    });
   }
 
   delete(id: string) {
@@ -68,16 +74,20 @@ export class ListAdmTresComponent implements OnDestroy {
       .afterClosed()
       .subscribe((result: any) => {
         if (result) {
-          this.tresService.delete(id).subscribe(() => {
-            this.updateList();
-            this.router.navigate(['/tres/adm5Ft76#$78&8uio&8)#80976']);
-          });
+          this.tresService
+            .delete(id)
+            .then(() => {
+              this.router.navigate(['/tres/adm5Ft76#$78&8uio&8#80976']);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       });
   }
 
   updateList() {
-    this.list$ = this.tresService
+    this.tresService
       .list()
       .pipe(
         map((tres: Tre[]) =>
@@ -86,7 +96,4 @@ export class ListAdmTresComponent implements OnDestroy {
       );
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 }

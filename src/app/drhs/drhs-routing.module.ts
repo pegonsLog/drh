@@ -7,7 +7,7 @@ import { ListUsersDrhsComponent } from './list-user/list-user-drhs.component';
 
 const routes: Routes = [
   {path: 'user', component: ListUsersDrhsComponent},
-  {path: 'adm5Ft76#$78&8uio&8)#33356', component: ListAdmDrhsComponent},
+  {path: 'adm5Ft76#$78&8uio&8#33356', component: ListAdmDrhsComponent},
   {path: 'new', component: FormDrhComponent, resolve: {drh: DrhResolver}},
   {path: 'edit/:id', component: FormDrhComponent, resolve: {drh: DrhResolver}}
 ];

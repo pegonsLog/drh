@@ -65,7 +65,9 @@ export class ListAdmDrhsComponent implements OnDestroy {
   }
 
   edit(id: string) {
-    this.router.navigate(['/drhs/edit', id]);
+    this.router.navigate(['/drhs/edit', id], {
+      queryParams: { role: this.role, user: this.matricula, name: this.name },
+    });
   }
 
   delete(id: string) {
@@ -77,7 +79,7 @@ export class ListAdmDrhsComponent implements OnDestroy {
           this.drhsService
             .delete(id)
             .then(() => {
-              this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356']);
+              this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8#33356']);
             })
             .catch((err) => {
               console.log(err);

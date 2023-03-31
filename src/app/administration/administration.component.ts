@@ -26,7 +26,7 @@ export class AdministrationComponent {
   }
 
   onTre() {
-    this.router.navigate(['/tres/adm5Ft76#$78&8uio&8)#80976'], {
+    this.router.navigate(['/tres/adm5Ft76#$78&8uio&8#80976'], {
       queryParams: {
         user: this.user,
         name: this.name,
@@ -36,7 +36,7 @@ export class AdministrationComponent {
   }
 
   onDrh() {
-    this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8)#33356'], {
+    this.router.navigate(['/drhs/adm5Ft76#$78&8uio&8#33356'], {
       queryParams: {
         user: this.user,
         name: this.name,
