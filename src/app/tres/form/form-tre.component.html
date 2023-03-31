@@ -37,7 +37,7 @@
     <ng-container *ngIf="tre.id === ''; else update_button">
       <button
         type="button"
-        id="button-tre"
+        id="button-salvar"
         (click)="onNew(tre)"
         mat-raised-button
       >
@@ -47,7 +47,7 @@
     <ng-template #update_button>
       <button
         type="button"
-        id="button-tre"
+        id="button-salvar"
         (click)="onUpdate(tre.id, tre)"
         mat-raised-button
       >

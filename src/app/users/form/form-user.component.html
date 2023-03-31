@@ -44,14 +44,26 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button
-      id="button-salvar"
-      (click)="onSubmit(userParam)"
-      name="user"
-      mat-raised-button
-    >
-      Salvar
-    </button>
+    <ng-container *ngIf="userParam.id === ''; else update_button">
+      <button
+        type="button"
+        id="button-salvar"
+        (click)="onNew(userParam)"
+        mat-raised-button
+      >
+        Salvar
+      </button>
+    </ng-container>
+    <ng-template #update_button>
+      <button
+        type="button"
+        id="button-salvar"
+        (click)="onUpdate(userParam.id, userParam)"
+        mat-raised-button
+      >
+        Salvar
+      </button>
+    </ng-template>
     <button type="button" mat-raised-button (click)="voltar()">Cancelar</button>
   </mat-card-actions>
 </mat-card>

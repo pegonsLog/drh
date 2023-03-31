@@ -33,15 +33,9 @@ export class FormTreComponent {
     if (this.user) {
       this.tre.registration = this.route.snapshot.queryParams['user'];
     }
-  }
-
-  voltar() {
-    this.location.back();
-  }
-
-  clear() {
-    this.tre.year = '';
-    this.tre.date = '';
+    if(!this.tre.date){
+      this.tre.date = 'Disponível'
+    }
   }
 
   onNew(tre: Tre) {
@@ -69,5 +63,14 @@ export class FormTreComponent {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  voltar() {
+    this.location.back();
+  }
+
+  clear() {
+    this.tre.year = '';
+    this.tre.date = '';
   }
 }

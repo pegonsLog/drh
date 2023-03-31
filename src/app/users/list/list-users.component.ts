@@ -1,13 +1,10 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable, Subscription } from 'rxjs';
-import { UsersService } from '../users.service';
-import { Location } from '@angular/common';
-import { User } from 'src/app/_shared/models/User';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subscription, map } from 'rxjs';
 import { ConfirmationDialogComponent } from 'src/app/_shared/dialogs/confirmation/confirmation.component';
-import { collection, Firestore } from 'firebase/firestore';
-import { collectionData } from '@angular/fire/firestore';
+import { User } from 'src/app/_shared/models/User';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-list-users',
@@ -16,6 +13,7 @@ import { collectionData } from '@angular/fire/firestore';
 })
 export class ListUsersComponent implements OnDestroy {
   list$: Observable<any>;
+  subscription: Subscription = new Subscription();
 
   user: User = {
     id: '',
@@ -28,52 +26,64 @@ export class ListUsersComponent implements OnDestroy {
   displayedColumns: string[] = ['name', 'password', 'role', 'actions'];
   role: string;
 
-  subscription: Subscription = new Subscription();
-
   constructor(
     private usersService: UsersService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location,
     public dialog: MatDialog
   ) {
-    this.list$ = this.usersService.list();
+    this.list$ = this.usersService
+      .list()
+      .pipe(
+        map((users: User[]) =>
+          {users.sort((a, b) => b.name!.localeCompare(a.name!))}
+        )
+      );
     this.role = this.route.snapshot.queryParams['role'];
     this.user = this.route.snapshot.queryParams['user'];
   }
 
   onSave() {
-    this.router.navigate(['/users/new9dkj%&kkh7898&8(jjj$5']);
+    this.router.navigate(['users/new9dkj%&kkh7898&8jjj$5']);
   }
-
   voltar() {
-    this.router.navigate(['/administrations']);
+    this.router.navigate(['administrations'], {
+      queryParams: { role: this.role, user: this.user },
+    });
   }
 
   edit(id: string) {
     this.router.navigate(['/users/edit', id], {
-      queryParams: {
-        user: this.user,
-      },
+      queryParams: { role: this.role, user: this.user },
     });
   }
 
-  delete(id: number) {
+  delete(id: string) {
     const dialogReference = this.dialog.open(ConfirmationDialogComponent);
     this.subscription = dialogReference
       .afterClosed()
       .subscribe((result: any) => {
         if (result) {
-          this.usersService.delete(id).subscribe(() => {
-            this.updateList();
-            this.router.navigate(['/users']);
-          });
+          this.usersService
+            .delete(id)
+            .then(() => {
+              this.router.navigate(['/users/list9dkj%&kkh7898&8jjj$5']);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       });
   }
 
   updateList() {
-    this.list$ = this.usersService.list();
+    this.usersService
+      .list()
+      .pipe(
+        map((users: User[]) =>
+          users.filter((user: any) => user.registration === this.user)
+        )
+      );
   }
 
   ngOnDestroy(): void {

@@ -34,6 +34,9 @@ export class FormDrhComponent {
     if (this.user) {
       this.drh.registration = this.route.snapshot.queryParams['user'];
     }
+    if(!this.drh.date){
+      this.drh.date = 'Disponível'
+    }
   }
 
   voltar() {

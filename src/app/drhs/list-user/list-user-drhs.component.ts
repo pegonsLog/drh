@@ -28,6 +28,7 @@ export class ListUsersDrhsComponent implements OnInit{
       .pipe(
         map((drhs: Drh[]) =>
           drhs.filter((drh: any) => drh.registration === this.matricula)
+          .sort((a, b) => b.period!.localeCompare(a.period!))
         )
       )
   }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   Resolve,
-  RouterStateSnapshot
+  RouterStateSnapshot,
 } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 import { DrhsService } from '../drhs/drhs.service';
@@ -23,7 +23,7 @@ export class DrhResolver implements Resolve<Drh> {
       return this.drhsService
         .findOne(route.params['id'])
         .pipe(map((drh: Drh) => drh));
-     }
+    }
 
     return of(this.drh);
   }

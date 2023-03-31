@@ -36,6 +36,7 @@ export class ListAdmTresComponent {
       .pipe(
         map((tres: Tre[]) =>
           tres.filter((tre: any) => tre.registration === this.matricula)
+          .sort((a, b) => b.year!.localeCompare(a.year!))
         )
       );
   }

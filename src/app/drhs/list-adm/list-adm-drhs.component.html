@@ -19,7 +19,7 @@
 
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef>Data</th>
-          <td mat-cell *matCellDef="let drh">{{ drh.date }}</td>
+          <td mat-cell *matCellDef="let drh"  [ngClass]="{'red-text': drh.date === 'Disponível'}">{{ drh.date }}</td>
         </ng-container>
 
         <ng-container matColumnDef="actions">

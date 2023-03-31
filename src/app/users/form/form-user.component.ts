@@ -1,16 +1,15 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/_shared/models/User';
 import { UsersService } from '../users.service';
-import { Location } from '@angular/common';
-import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form-user',
   templateUrl: './form-user.component.html',
   styleUrls: ['./form-user.component.scss'],
 })
-export class FormUserComponent implements OnDestroy {
+export class FormUserComponent {
   userParam: User = {
     id: '',
     user: '',
@@ -18,8 +17,6 @@ export class FormUserComponent implements OnDestroy {
     password: '',
     role: '',
   };
-
-  subscription: Subscription = new Subscription();
 
   constructor(
     private usersService: UsersService,
@@ -31,24 +28,35 @@ export class FormUserComponent implements OnDestroy {
 
     if (this.route.snapshot.queryParams['user']) {
       this.userParam.user = this.route.snapshot.queryParams['user'];
+      this.userParam.role = 'user';
     }
   }
 
-  onSubmit(user: User) {
-    if (this.userParam.id !== '') {
-      this.subscription = this.update(user).subscribe(() => {
-        this.location.back();
+  onNew(user: User) {
+    this.usersService
+      .addUser(user)
+      .then(() => {
+        this.router.navigate(['/users/list9dkj%&kkh7898&8jjj$5']);
+        this.clear();
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    } else {
-      this.subscription = this.new(user).subscribe(() => {
-        this.location.back();
+  }
+
+  onUpdate(id: string, user: User) {
+    this.usersService
+      .update(user, id)
+      .then(() => {
+        this.router.navigate(['/users/list9dkj%&kkh7898&8jjj$5']);
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    }
-    this.clear();
   }
 
   voltar() {
-    this.location.back();
+    this.router.navigate(['/users/list9dkj%&kkh7898&8jjj$5']);
   }
 
   clear() {
@@ -56,17 +64,5 @@ export class FormUserComponent implements OnDestroy {
     this.userParam.name = '';
     this.userParam.password = '';
     this.userParam.role = '';
-  }
-
-  new(user: User): Observable<User> {
-    return this.usersService.save(user);
-  }
-
-  update(user: User): Observable<User> {
-    return this.usersService.update(user);
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 }

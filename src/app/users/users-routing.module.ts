@@ -5,8 +5,8 @@ import { FormUserComponent } from './form/form-user.component';
 import { ListUsersComponent } from './list/list-users.component';
 
 const routes: Routes = [
-  {path: '', component: ListUsersComponent},
-  {path: 'new9dkj%&kkh7898&8(jjj$5', component: FormUserComponent, resolve: {user: UserResolver}},
+  {path: 'list9dkj%&kkh7898&8jjj$5', component: ListUsersComponent},
+  {path: 'new9dkj%&kkh7898&8jjj$5', component: FormUserComponent, resolve: {user: UserResolver}},
   {path: 'edit/:id', component: FormUserComponent, resolve: {user: UserResolver}}
 ];
 

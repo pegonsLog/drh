@@ -30,6 +30,7 @@ export class ListUserTresComponent {
       .pipe(
         map((drhs: Tre[]) =>
           drhs.filter((drh: any) => drh.registration === this.matricula)
+          .sort((a, b) => b.year!.localeCompare(a.year!))
         )
       );
   }
