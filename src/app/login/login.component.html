@@ -4,16 +4,22 @@
       >Consulta de DRH e TRE - GARBO</mat-toolbar
     >
     <mat-form-field class="full-width">
-      <input matInput placeholder="Usuário" [(ngModel)]="user" name="user" />
+      <input
+        matInput
+        placeholder="Usuário"
+        [(ngModel)]="user"
+        name="user"
+        pattern="[0-9]*"
+      />
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <input
         matInput
-        type="password"
         placeholder="Senha"
         [(ngModel)]="password"
         name="password"
+        pattern="[0-9]*"
       />
     </mat-form-field>
     <mat-card-actions>
