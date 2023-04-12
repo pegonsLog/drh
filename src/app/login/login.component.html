@@ -17,6 +17,8 @@
       <input
         matInput
         placeholder="Senha"
+        type="password"
+        inputmode="numeric"
         [(ngModel)]="password"
         name="password"
         pattern="[0-9]*"
@@ -40,12 +42,12 @@
         TRE
       </button>
       <button
-        type="button"
+        id="button-facultativo"
+        (click)="facultativo('facultativos')"
+        name="facultativo"
         mat-raised-button
-        (click)="clear()"
-        id="button-limpar"
       >
-        Limpar
+        P. FAC.
       </button>
     </mat-card-actions>
   </mat-card-content>

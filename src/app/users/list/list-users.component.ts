@@ -32,15 +32,15 @@ export class ListUsersComponent implements OnDestroy {
     private router: Router,
     public dialog: MatDialog
   ) {
-    this.list$ = this.usersService
-      .list()
-      .pipe(
-        map((users: User[]) =>
-          {users.sort((a, b) => b.name!.localeCompare(a.name!))}
-        )
-      );
     this.role = this.route.snapshot.queryParams['role'];
     this.user = this.route.snapshot.queryParams['user'];
+
+    this.list$ = this.usersService.list().pipe(
+      map((users: User[]) => {
+        users.sort((a, b) => b.name!.localeCompare(a.name!));
+        return users;
+      })
+    );
   }
 
   onSave() {
@@ -53,7 +53,7 @@ export class ListUsersComponent implements OnDestroy {
   }
 
   edit(id: string) {
-    this.router.navigate(['/users/edit', id], {
+    this.router.navigate(['users/edit', id], {
       queryParams: { role: this.role, user: this.user },
     });
   }

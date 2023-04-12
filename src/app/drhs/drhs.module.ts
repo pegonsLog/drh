@@ -28,9 +28,6 @@ import { ListUsersDrhsComponent } from './list-user/list-user-drhs.component';
     AngularMaterialModule,
     FormsModule,
     ConfirmationModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
 
   ],
   exports: [FormDrhComponent, ListUsersDrhsComponent, ListAdmDrhsComponent],

@@ -13,7 +13,7 @@
   }
 }
 
-#drhs-list {
+#facultativos-list {
   width: 40%;
   margin: 0 auto;
 }
@@ -71,6 +71,17 @@ table {
   color: red;
 }
 
+#button-drh {
+  display: block;
+  width: 100%;
+  font-size: 0.9rem;
+  background-color: #84a2f3;
+  color: white;
+  font-weight: 300;
+  font-family: Montserrat;
+  margin: 10px 8px;
+}
+
 #button-tre {
   display: block;
   width: 100%;
@@ -79,15 +90,7 @@ table {
   font-family: Montserrat;
   margin: 10px 8px;
 }
-#button-facultativo{
-  display: block;
-  width: 100%;
-  font-size: 0.9rem;
-  background-color: #d2da2c;
-  color: white;
-  font-weight: 300;
-  font-family: Montserrat;
-}
+
 #button-voltar{
   display: block;
   width: 100%;

@@ -1,4 +1,4 @@
-@import 'material-icons/iconfont/material-icons.css';
+@import "material-icons/iconfont/material-icons.css";
 
 @media (mix-width: 600px) {
   mat-card {
@@ -68,4 +68,32 @@ table {
 .red-text {
   font-weight: 600;
   color: red;
+}
+
+#button-drh {
+  display: block;
+  width: 100%;
+  font-size: 0.9rem;
+  background-color: #84a2f3;
+  color: white;
+  font-weight: 300;
+  font-family: Montserrat;
+  margin: 10px 8px;
+}
+#button-facultativo {
+  display: block;
+  width: 100%;
+  font-size: 0.9rem;
+  background-color: #d2da2c;
+  color: white;
+  font-weight: 300;
+  font-family: Montserrat;
+}
+#button-voltar {
+  display: block;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 300;
+  font-family: Montserrat;
+  margin: 10px 8px;
 }

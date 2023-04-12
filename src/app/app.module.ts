@@ -15,6 +15,7 @@ import { DrhsModule } from './drhs/drhs.module';
 import { LoginModule } from './login/login.module';
 import { TresModule } from './tres/tres.module';
 import { UsersModule } from './users/users.module';
+import { FacultativoModule } from './facultativos/facultativo.module';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { UsersModule } from './users/users.module';
     UsersModule,
     DrhsModule,
     TresModule,
+    FacultativoModule,
     HttpClientModule,
     AdministrationModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),

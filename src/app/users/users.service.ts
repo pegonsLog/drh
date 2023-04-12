@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, deleteDoc, doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
+import {
+  addDoc,
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+  docData,
+  Firestore,
+  setDoc,
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/_shared/models/User';
 
@@ -7,13 +16,11 @@ import { User } from 'src/app/_shared/models/User';
   providedIn: 'root',
 })
 export class UsersService {
-
   constructor(private firestore: Firestore) {}
 
   list() {
     let $userRef = collection(this.firestore, 'users');
     return collectionData($userRef, { idField: 'id' }) as Observable<User[]>;
-
   }
   findOne(id: string) {
     let $userRef = doc(this.firestore, 'users/' + id);

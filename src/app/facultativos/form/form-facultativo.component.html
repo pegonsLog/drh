@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-card-content>
+    <ng-container *ngIf="facultativo.id === ''; else update">
+      <mat-toolbar color="primary" id="peso-fonte">Adicionar Ponto Facultativo</mat-toolbar>
+    </ng-container>
+    <ng-template #update>
+      <mat-toolbar color="primary" id="peso-fonte">Alterar Ponto Facultativo</mat-toolbar>
+    </ng-template>
+
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Matrícula"
+        name="registration"
+        [(ngModel)]="facultativo.registration"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Dia"
+        name="day"
+        [(ngModel)]="facultativo.day"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Data do uso "
+        name="date"
+        [(ngModel)]="facultativo.date"
+      />
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <ng-container *ngIf="facultativo.id === ''; else update_button">
+      <button
+        type="button"
+        id="button-facultativo"
+        (click)="onNew(facultativo)"
+        mat-raised-button
+      >
+        Salvar
+      </button>
+    </ng-container>
+    <ng-template #update_button>
+      <button
+        type="button"
+        id="button-facultativo"
+        (click)="onUpdate(facultativo.id, facultativo)"
+        mat-raised-button
+      >
+        Salvar
+      </button>
+    </ng-template>
+    <button type="button" mat-raised-button (click)="voltar()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>
+

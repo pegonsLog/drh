@@ -9,7 +9,12 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ListUsersComponent, FormUserComponent],
-  imports: [CommonModule, UsersRoutingModule, AngularMaterialModule, FormsModule],
+  imports: [
+    CommonModule,
+    UsersRoutingModule,
+    AngularMaterialModule,
+    FormsModule,
+  ],
   exports: [ListUsersComponent, FormUserComponent],
 })
 export class UsersModule {}

@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header>
     <mat-toolbar id="toolbar" color="primary"
-      >TREs - Mat.: {{ matricula }}
+      >TRE - Mat.: {{ matricula }}
      </mat-toolbar>
   </mat-card-header>
   <mat-card-content>
@@ -31,13 +31,10 @@
   </ng-template>
   <mat-divider></mat-divider>
   <mat-card-actions>
-    <button
-      style="margin: 10px 8px"
-      (click)="voltar()"
-      mat-raised-button
-      color="primary"
-    >
-      VOLTAR
+    <button id="button-drh" (click)="onDrh()" mat-raised-button>DRH</button>
+    <button id="button-facultativo" (click)="onFacultativo()" mat-raised-button>
+      P. FAC.
     </button>
+    <button id="button-voltar" (click)="voltar()" mat-raised-button>VOLTAR</button>
   </mat-card-actions>
 </mat-card>

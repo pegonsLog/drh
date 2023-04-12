@@ -38,4 +38,15 @@ export class ListUserTresComponent {
   voltar() {
     this.location.back();
   }
+
+  onDrh() {
+    this.router.navigate(['drhs/user'], {
+      queryParams: { user: this.matricula },
+    });
+  }
+  onFacultativo() {
+    this.router.navigate(['facultativos/user'], {
+      queryParams: { user: this.matricula },
+    });
+  }
 }

@@ -42,6 +42,10 @@ export class LoginComponent implements OnDestroy {
     this.query(tre);
   }
 
+  facultativo(facultativo: string) {
+    this.query(facultativo);
+  }
+
   query(type: string) {
     for (let usr of this.users) {
       if (usr.user === this.user && usr.password === this.password) {
@@ -70,21 +74,6 @@ export class LoginComponent implements OnDestroy {
       alert('Usuário e/ou senha inválido(s)!');
       this.router.navigate(['']);
     }
-  }
-
-  clear() {
-    this.user = '';
-    this.password = '';
-  }
-
-  adm() {
-    this.user = '2611';
-    this.password = '0406';
-  }
-
-  userCommon() {
-    this.user = '410';
-    this.password = '410';
   }
 
   onError() {

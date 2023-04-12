@@ -45,6 +45,16 @@ export class AdministrationComponent {
     });
   }
 
+  onFacultativo() {
+    this.router.navigate(['/facultativos/adm5Ft76#$78&8uio&8#33356'], {
+      queryParams: {
+        user: this.user,
+        name: this.name,
+        role: this.role
+      },
+    });
+  }
+
   onUsers() {
     this.router.navigate(['/users/list9dkj%&kkh7898&8jjj$5']);
   }

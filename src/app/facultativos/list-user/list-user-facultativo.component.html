@@ -1,27 +1,21 @@
 <mat-card>
   <mat-card-header>
     <mat-toolbar id="toolbar" color="primary"
-      >DRH - Mat.: {{ matricula }}
+      >FACULTATIVO - Mat.: {{ matricula }}
     </mat-toolbar>
   </mat-card-header>
   <mat-card-content>
     <div id="altura" *ngIf="list$ | async; else loading">
       <table mat-table [dataSource]="list$ | async">
-        <ng-container matColumnDef="period">
+
+        <ng-container matColumnDef="day">
           <th mat-header-cell *matHeaderCellDef>Aquisitivo</th>
-          <td mat-cell *matCellDef="let drh">{{ drh.period }}</td>
+          <td mat-cell *matCellDef="let facultativo">{{ facultativo.day }}</td>
         </ng-container>
 
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef>Data</th>
-          <td
-            mat-cell
-            *matCellDef="let drh"
-            mask="99/99/9999"
-            [ngClass]="{ 'red-text': drh.date === 'Disponível' }"
-          >
-            {{ drh.date }}
-          </td>
+          <td mat-cell *matCellDef="let facultativo" [ngClass]="{'red-text': facultativo.date === 'Disponível'}">{{ facultativo.date }}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -37,9 +31,9 @@
   </ng-template>
   <mat-divider></mat-divider>
   <mat-card-actions>
-    <button id="button-tre" (click)="onTre()" mat-raised-button>TRE</button>
-    <button id="button-facultativo" (click)="onFacultativo()" mat-raised-button>
-      P. FAC.
+    <button id="button-drh" (click)="onDrh()" mat-raised-button>DRH</button>
+    <button id="button-tre" (click)="onTre()" mat-raised-button>
+      TRE
     </button>
     <button id="button-voltar" (click)="voltar()" mat-raised-button>VOLTAR</button>
   </mat-card-actions>

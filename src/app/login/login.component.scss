@@ -34,6 +34,8 @@ button {
   margin-right: 10px;
 }
 #button-drh{
+  display: block;
+  width: 100%;
   font-size: 0.9rem;
   background-color: #84a2f3;
   color: white;
@@ -41,9 +43,21 @@ button {
   font-family: Montserrat;
 }
 #button-tre{
+  display: block;
+  width: 100%;
   font-size: 0.9rem;
   background-color: #78dd77;
   color: white;
   font-weight: 300;
   font-family: Montserrat;
 }
+#button-facultativo{
+  display: block;
+  width: 100%;
+  font-size: 0.9rem;
+  background-color: #d2da2c;
+  color: white;
+  font-weight: 300;
+  font-family: Montserrat;
+}
+

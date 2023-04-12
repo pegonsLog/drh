@@ -17,7 +17,7 @@ const routes: Routes = [
         (m) => m.AdministrationModule
       ),
   },
-
+  
   {
     path: 'users',
     loadChildren: () =>
@@ -33,6 +33,11 @@ const routes: Routes = [
     path: 'tres',
     loadChildren: () =>
       import('src/app/tres/tres.module').then((m) => m.TresModule),
+  },
+  {
+    path: 'facultativos',
+    loadChildren: () =>
+      import('src/app/facultativos/facultativo.module').then((m) => m.FacultativoModule),
   },
 ];
 
