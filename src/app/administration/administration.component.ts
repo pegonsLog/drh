@@ -54,6 +54,15 @@ export class AdministrationComponent {
       },
     });
   }
+  onEscala() {
+    this.router.navigate(['/escalas/adm5Ft76#$78&8uio&8#80976'], {
+      queryParams: {
+        user: this.user,
+        name: this.name,
+        role: this.role
+      },
+    });
+  }
 
   onUsers() {
     this.router.navigate(['/users/list9dkj%&kkh7898&8jjj$5']);

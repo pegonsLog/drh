@@ -46,6 +46,10 @@ export class LoginComponent implements OnDestroy {
     this.query(facultativo);
   }
 
+  escala(escala: string) {
+    this.query(escala);
+  }
+
   query(type: string) {
     for (let usr of this.users) {
       if (usr.user === this.user && usr.password === this.password) {

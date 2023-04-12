@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-card-header>
+    <mat-toolbar id="toolbar" color="primary"
+      >ESCALA
+      <span id="buttons">
+        <button (click)="onSave()" id="mat-button-custom-adm">
+          <mat-icon class="new" fontSet="material-icons-round">add</mat-icon>
+        </button>
+      </span>
+    </mat-toolbar>
+  </mat-card-header>
+  <mat-card-content>
+    <div id="altura" *ngIf="list$ | async; else loading">
+      <table mat-table [dataSource]="list$ | async">
+        <ng-container matColumnDef="month">
+          <th mat-header-cell *matHeaderCellDef>Mês</th>
+          <td mat-cell *matCellDef="let escala">{{ escala.month }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef>Ano</th>
+          <td mat-cell *matCellDef="let escala">{{ escala.year }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th style="text-align: center" mat-header-cell *matHeaderCellDef>
+            Ações
+          </th>
+          <td mat-cell *matCellDef="let escala">
+            <span id="actions">
+              <button (click)="edit(escala.id)" id="mat-button-custom">
+                <mat-icon id="edit" fontSet="material-icons-outlined"
+                  >edit</mat-icon
+                >
+              </button>
+              <button (click)="delete(escala.id)" id="mat-button-custom">
+                <mat-icon id="delete" fontSet="material-icons-outlined"
+                  >delete</mat-icon
+                >
+              </button>
+            </span>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-card-content>
+  <ng-template #loading>
+    <div id="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <button id="button-drh" (click)="onDrh()" mat-raised-button>DRH</button>
+    <button id="button-tre" (click)="onTre()" mat-raised-button>TRE</button>
+    <button id="button-facultativo" (click)="onFacultativo()" mat-raised-button>
+      FACULTATIVO
+    </button>
+    <button id="button-voltar" (click)="voltar()" mat-raised-button>
+      VOLTAR
+    </button>
+  </mat-card-actions>
+</mat-card>
