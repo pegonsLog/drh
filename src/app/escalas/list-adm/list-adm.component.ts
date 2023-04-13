@@ -9,9 +9,9 @@ import { EscalasService } from 'src/app/escalas/escalas.service';
 @Component({
   selector: 'app-list-adm',
   templateUrl: './list-adm.component.html',
-  styleUrls: ['./list-adm.component.scss']
+  styleUrls: ['./list-adm.component.scss'],
 })
-export class ListAdmEscalasComponent implements OnDestroy{
+export class ListAdmEscalasComponent implements OnDestroy {
   list$: Observable<any>;
 
   matricula: string;
@@ -19,31 +19,29 @@ export class ListAdmEscalasComponent implements OnDestroy{
   name: string;
   subscription: Subscription = new Subscription();
 
-  displayedColumns: string[] = ['month', 'year'];
+  displayedColumns: string[] = ['yearMonth', 'actions'];
 
   constructor(
     private escalasService: EscalasService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {
     this.matricula = this.route.snapshot.queryParams['user'];
     this.role = this.route.snapshot.queryParams['role'];
     this.name = this.route.snapshot.queryParams['name'];
 
-    this.list$ = this.escalasService
-      .list()
-      .pipe(
-        map((escalas: Escala[]) =>
-          escalas.filter((escala: any) => escala.registration === this.matricula)
-         // .sort((a, b) => b.month!.localeCompare(a.month!))
-        )
-      );
+    this.list$ = this.escalasService.list().pipe(
+      map((escalas: Escala[]) => {
+        escalas.sort((a, b) => b.yearMonth!.localeCompare(a.yearMonth!))
+        return escalas;   
+      })
+    );
   }
 
   voltar() {
     this.router.navigate(['administrations'], {
-      queryParams: { role: this.role, user: this.matricula },
+      queryParams: { role: this.role, user: this.matricula, name: this.name},
     });
   }
 
@@ -62,6 +60,10 @@ export class ListAdmEscalasComponent implements OnDestroy{
     this.router.navigate(['facultativos/adm5Ft76#$78&8uio&8#33356'], {
       queryParams: { role: this.role, user: this.matricula, name: this.name },
     });
+  }
+
+  cancel() {
+    this.router.navigate(['/']);
   }
 
   onSave() {
@@ -98,12 +100,18 @@ export class ListAdmEscalasComponent implements OnDestroy{
       });
   }
 
+  onLink(link: string) {
+    window.open(link, '_blank');
+  }
+  
   updateList() {
     this.escalasService
       .list()
       .pipe(
         map((escalas: Escala[]) =>
-          escalas.filter((escala: any) => escala.registration === this.matricula)
+          escalas.filter(
+            (escala: any) => escala.registration === this.matricula
+          )
         )
       );
   }
@@ -112,4 +120,3 @@ export class ListAdmEscalasComponent implements OnDestroy{
     this.subscription.unsubscribe();
   }
 }
-

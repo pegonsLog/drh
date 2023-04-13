@@ -1,4 +1,4 @@
-@import 'material-icons/iconfont/material-icons.css';
+@import "material-icons/iconfont/material-icons.css";
 
 @media (mix-width: 600px) {
   mat-card {
@@ -32,30 +32,36 @@ table {
   padding: 10px;
 }
 
-#toolbar{
+#toolbar {
   display: flex;
   justify-content: space-between;
 }
 
-#delete{
+#delete {
   cursor: pointer;
   color: rgb(255, 71, 71);
   display: flex;
   align-items: center;
 }
-#edit{
+#edit {
   cursor: pointer;
   color: rgb(5, 167, 5);
   display: flex;
   align-items: center;
 }
-.new{
+#details {
+  cursor: pointer;
+  color: rgb(60, 13, 228);
+  display: flex;
+  align-items: center;
+}
+.new {
   cursor: pointer;
   color: white;
   display: flex;
   align-items: center;
 }
-#actions{
+#actions {
   display: flex;
   justify-content: center;
 }
@@ -110,7 +116,7 @@ table {
   font-family: Montserrat;
   margin: 10px 8px;
 }
-#button-facultativo{
+#button-facultativo {
   display: block;
   width: 100%;
   font-size: 0.9rem;
@@ -119,11 +125,24 @@ table {
   font-weight: 300;
   font-family: Montserrat;
 }
-#button-voltar{
+#button-voltar {
   display: block;
   width: 100%;
   font-size: 0.9rem;
   font-weight: 300;
   font-family: Montserrat;
+  background-color: rgb(243, 162, 192);
   margin: 10px 8px;
+}
+#button-sair {
+  width: 20%;
+  font-size: 0.9rem;
+  color: rgb(65, 63, 63);
+  font-weight: 500;
+  font-family: Montserrat;
+}
+.sair {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-administration',
@@ -15,10 +14,10 @@ export class AdministrationComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private location: Location
   ) {
     this.role = this.route.snapshot.queryParams['role'];
     this.name = this.route.snapshot.queryParams['name'];
+    this.user = this.route.snapshot.queryParams['user'];
   }
 
   cancel() {

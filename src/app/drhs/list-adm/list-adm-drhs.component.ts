@@ -45,7 +45,7 @@ export class ListAdmDrhsComponent implements OnDestroy {
 
   voltar() {
     this.router.navigate(['administrations'], {
-      queryParams: { role: this.role, user: this.matricula },
+      queryParams: { role: this.role, user: this.matricula, name: this.name },
     });
   }
 

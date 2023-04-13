@@ -17,7 +17,7 @@ const routes: Routes = [
         (m) => m.AdministrationModule
       ),
   },
-  
+
   {
     path: 'users',
     loadChildren: () =>
@@ -39,6 +39,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('src/app/facultativos/facultativo.module').then((m) => m.FacultativoModule),
   },
+  {
+    path: 'escalas',
+    loadChildren: () =>
+      import('src/app/escalas/escalas.module').then((m) => m.EscalasModule),
+  }
 ];
 
 @NgModule({

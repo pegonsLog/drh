@@ -37,7 +37,7 @@ export class ListUsersComponent implements OnDestroy {
 
     this.list$ = this.usersService.list().pipe(
       map((users: User[]) => {
-        users.sort((a, b) => b.name!.localeCompare(a.name!));
+        users.sort((a, b) => a.name!.localeCompare(b.name!));
         return users;
       })
     );

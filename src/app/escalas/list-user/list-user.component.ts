@@ -8,33 +8,29 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.scss']
+  styleUrls: ['./list-user.component.scss'],
 })
 export class ListUserEscalasComponent {
   list$: Observable<any>;
   matricula: string;
-  displayedColumns: string[] = ['month', 'year'];
+  displayedColumns: string[] = ['yearMonth', 'actions'];
 
   constructor(
     private escalasService: EscalasService,
     private route: ActivatedRoute,
-    private location: Location,
     private router: Router
   ) {
     this.matricula = this.route.snapshot.queryParams['user'];
 
-    this.list$ = this.escalasService
-      .list()
-      .pipe(
-        map((escalas: Escala[]) =>
-          escalas
-            .filter((escala: any) => escala.registration === this.matricula)
-           // .sort((a, b) => b.month!.localeCompare(a.month!))
-        )
-      );
+    this.list$ = this.escalasService.list().pipe(
+      map((escalas: Escala[]) => {
+        escalas.sort((a, b) => a.yearMonth!.localeCompare(b.yearMonth!))
+        return escalas;
+      })
+    );
   }
   voltar() {
-    this.location.back();
+    this.router.navigate(['/']);
   }
 
   ngOnInit(): void {
@@ -52,10 +48,13 @@ export class ListUserEscalasComponent {
       queryParams: { user: this.matricula },
     });
   }
-  
+
   onFacultativo() {
     this.router.navigate(['facultativos/user'], {
       queryParams: { user: this.matricula },
     });
+  }
+  onLink(link: string) {
+    window.open(link, '_blank');
   }
 }

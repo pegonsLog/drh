@@ -10,13 +10,15 @@ import { Location } from '@angular/common';
   styleUrls: ['./form.component.scss']
 })
 export class FormEscalasComponent {
+
   role: string;
   user: string;
   name: string;
+
   escala: Escala = {
     id: '',
-    month: 0,
-    year: 0,
+    yearMonth: '',
+    link: ''
   };
 
   constructor(
@@ -36,8 +38,8 @@ export class FormEscalasComponent {
   }
 
   clear() {
-    this.escala. month = 0;
-    this.escala.year = 0;
+    this.escala. yearMonth = '';
+    this.escala. link = '';
   }
 
   onNew(escala: Escala) {

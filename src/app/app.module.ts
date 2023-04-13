@@ -16,6 +16,7 @@ import { LoginModule } from './login/login.module';
 import { TresModule } from './tres/tres.module';
 import { UsersModule } from './users/users.module';
 import { FacultativoModule } from './facultativos/facultativo.module';
+import { EscalasModule } from './escalas/escalas.module';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FacultativoModule } from './facultativos/facultativo.module';
     DrhsModule,
     TresModule,
     FacultativoModule,
+    EscalasModule,
     HttpClientModule,
     AdministrationModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),

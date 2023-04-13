@@ -5,14 +5,23 @@
   <mat-card-content>
     <div id="altura" *ngIf="list$ | async; else loading">
       <table mat-table [dataSource]="list$ | async">
-        <ng-container matColumnDef="month">
-          <th mat-header-cell *matHeaderCellDef>Mês</th>
-          <td mat-cell *matCellDef="let escala">{{ escala.month }}</td>
+        <ng-container matColumnDef="yearMonth">
+          <th mat-header-cell *matHeaderCellDef>Ano/Mês</th>
+          <td mat-cell *matCellDef="let escala">{{ escala.yearMonth }}</td>
         </ng-container>
-
-        <ng-container matColumnDef="year">
-          <th mat-header-cell *matHeaderCellDef>Ano</th>
-          <td mat-cell *matCellDef="let escala">{{ escala.year }}</td>
+        <ng-container matColumnDef="actions">
+          <th style="text-align: center" mat-header-cell *matHeaderCellDef>
+            Abrir Escala
+          </th>
+          <td mat-cell *matCellDef="let escala">
+            <span id="actions">
+              <button (click)="onLink(escala.link)" id="mat-button-custom">
+                <mat-icon id="details" fontSet="material-icons-outlined"
+                  >forward</mat-icon
+                >
+              </button>
+            </span>
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -31,10 +40,10 @@
     <button id="button-drh" (click)="onDrh()" mat-raised-button>DRH</button>
     <button id="button-tre" (click)="onTre()" mat-raised-button>TRE</button>
     <button id="button-facultativo" (click)="onFacultativo()" mat-raised-button>
-      P. FAC.
+      FAC
     </button>
     <button id="button-voltar" (click)="voltar()" mat-raised-button>
-      VOLTAR
+      SAIR
     </button>
   </mat-card-actions>
 </mat-card>

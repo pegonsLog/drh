@@ -1,4 +1,5 @@
 export interface Escala {
-  year?: number,
-  month?: number,
+  id: string;
+  yearMonth?: string;
+  link?: string;
 }

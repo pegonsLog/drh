@@ -10,7 +10,7 @@ import { DrhsService } from '../drhs.service';
   templateUrl: './list-user-drhs.component.html',
   styleUrls: ['./list-user-drhs.component.scss'],
 })
-export class ListUsersDrhsComponent implements OnInit {
+export class ListUsersDrhsComponent {
   list$: Observable<any>;
   matricula: string;
   displayedColumns: string[] = ['period', 'date'];
@@ -18,7 +18,6 @@ export class ListUsersDrhsComponent implements OnInit {
   constructor(
     private drhsService: DrhsService,
     private route: ActivatedRoute,
-    private location: Location,
     private router: Router
   ) {
     this.matricula = this.route.snapshot.queryParams['user'];
@@ -34,11 +33,7 @@ export class ListUsersDrhsComponent implements OnInit {
       );
   }
   voltar() {
-    this.location.back();
-  }
-
-  ngOnInit(): void {
-    console.log(this.list$);
+    this.router.navigate(['/']);
   }
 
   onTre() {

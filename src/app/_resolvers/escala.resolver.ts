@@ -12,7 +12,7 @@ import { EscalasService } from '../escalas/escalas.service';
   providedIn: 'root',
 })
 export class EscalasResolver implements Resolve<Escala> {
-  escala: Escala = { year: 0, month: 0};
+  escala: Escala = { id: '', yearMonth: '', link: ''}
   constructor(private escalasService: EscalasService) {}
 
   resolve(

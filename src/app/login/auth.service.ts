@@ -27,12 +27,7 @@ export class AuthService {
     role: '',
   };
 
-  constructor(private http: HttpClient, private router: Router) {}
-
-  // list(): Observable<User[]> {
-  //   // return of(this.users);
-  //   return this.http.get<User[]>(this.API).pipe(first());
-  // }
+  constructor() {}
 
   list(): Observable<User[]> {
     const users = collection(this.db, 'users');

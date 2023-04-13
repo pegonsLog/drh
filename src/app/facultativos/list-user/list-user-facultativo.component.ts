@@ -36,7 +36,7 @@ export class ListUserFacultativoComponent {
       );
   }
   voltar() {
-    this.location.back();
+    this.router.navigate(['/']);
   }
 
   ngOnInit(): void {}

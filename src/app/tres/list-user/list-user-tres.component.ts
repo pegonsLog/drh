@@ -29,14 +29,15 @@ export class ListUserTresComponent {
       .list()
       .pipe(
         map((drhs: Tre[]) =>
-          drhs.filter((drh: any) => drh.registration === this.matricula)
-          .sort((a, b) => b.year!.localeCompare(a.year!))
+          drhs
+            .filter((drh: any) => drh.registration === this.matricula)
+            .sort((a, b) => b.year!.localeCompare(a.year!))
         )
       );
   }
 
   voltar() {
-    this.location.back();
+    this.router.navigate(['/']);
   }
 
   onDrh() {
