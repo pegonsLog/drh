@@ -78,7 +78,7 @@ table {
   color: white;
   font-weight: 300;
   font-family: Montserrat;
-  margin: 10px 8px;
+  margin: 10px 8px 10px 8px;
 }
 #button-facultativo {
   display: block;
@@ -88,6 +88,7 @@ table {
   color: white;
   font-weight: 300;
   font-family: Montserrat;
+  margin: 10px 8px 10px 0px;
 }
 #button-voltar {
   display: block;
@@ -96,5 +97,16 @@ table {
   font-weight: 300;
   font-family: Montserrat;
   background-color: rgb(243, 162, 192);
-  margin: 10px 8px;
+  margin: 10px 8px 10px 0px;
+  }
+#button-escala {
+  display: block;
+  width: 100%;
+  font-size: 0.9rem;
+  background-color: #cb44d7;
+  color: white;
+  font-weight: 300;
+  font-family: Montserrat;
+  margin: 10px 8px 10px 0px;
+
 }

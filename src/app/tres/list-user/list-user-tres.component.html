@@ -2,12 +2,11 @@
   <mat-card-header>
     <mat-toolbar id="toolbar" color="primary"
       >TRE - Mat.: {{ matricula }}
-     </mat-toolbar>
+    </mat-toolbar>
   </mat-card-header>
   <mat-card-content>
     <div id="altura" *ngIf="list$ | async; else loading">
       <table mat-table [dataSource]="list$ | async">
-
         <ng-container matColumnDef="year">
           <th mat-header-cell *matHeaderCellDef>Ano</th>
           <td mat-cell *matCellDef="let tre">{{ tre.year }}</td>
@@ -15,7 +14,13 @@
 
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef>Data</th>
-          <td mat-cell *matCellDef="let tre" [ngClass]="{'red-text': tre.date === 'Disponível'}">{{ tre.date }}</td>
+          <td
+            mat-cell
+            *matCellDef="let tre"
+            [ngClass]="{ 'red-text': tre.date === 'Disponível' }"
+          >
+            {{ tre.date }}
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -35,6 +40,16 @@
     <button id="button-facultativo" (click)="onFacultativo()" mat-raised-button>
       FAC
     </button>
-    <button id="button-voltar" (click)="voltar()" mat-raised-button>SAIR</button>
+    <button
+      id="button-escala"
+      (click)="escala()"
+      name="escala"
+      mat-raised-button
+    >
+      ESC
+    </button>
+    <button id="button-voltar" (click)="voltar()" mat-raised-button>
+      SAIR
+    </button>
   </mat-card-actions>
 </mat-card>

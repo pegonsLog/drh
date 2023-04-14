@@ -36,6 +36,10 @@ export class ListUsersDrhsComponent {
     this.router.navigate(['/']);
   }
 
+  escala() {
+    this.router.navigate(['escalas/user']);
+  }
+
   onTre() {
     this.router.navigate(['tres/user'], {
       queryParams: { user: this.matricula },

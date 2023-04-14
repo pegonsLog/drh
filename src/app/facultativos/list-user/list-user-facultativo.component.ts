@@ -39,6 +39,10 @@ export class ListUserFacultativoComponent {
     this.router.navigate(['/']);
   }
 
+  escala() {
+    this.router.navigate(['escalas/user']);
+  }
+
   ngOnInit(): void {}
 
   onDrh() {

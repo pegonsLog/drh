@@ -6,9 +6,7 @@
   </mat-card-header>
   <mat-card-content>
     <div id="altura" *ngIf="list$ | async; else loading">
-
       <table mat-table [dataSource]="list$ | async">
-
         <ng-container matColumnDef="day">
           <th mat-header-cell *matHeaderCellDef>Aquisitivo</th>
           <td mat-cell *matCellDef="let facultativo">{{ facultativo.day }}</td>
@@ -16,9 +14,15 @@
 
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef>Data</th>
-          <td mat-cell *matCellDef="let facultativo" [ngClass]="{'red-text': facultativo.date === 'Disponível'}">{{ facultativo.date }}</td>
+          <td
+            mat-cell
+            *matCellDef="let facultativo"
+            [ngClass]="{ 'red-text': facultativo.date === 'Disponível' }"
+          >
+            {{ facultativo.date }}
+          </td>
         </ng-container>
-   
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
@@ -33,9 +37,17 @@
   <mat-divider></mat-divider>
   <mat-card-actions>
     <button id="button-drh" (click)="onDrh()" mat-raised-button>DRH</button>
-    <button id="button-tre" (click)="onTre()" mat-raised-button>
-      TRE
+    <button id="button-tre" (click)="onTre()" mat-raised-button>TRE</button>
+    <button
+      id="button-escala"
+      (click)="escala()"
+      name="escala"
+      mat-raised-button
+    >
+      ESC
     </button>
-    <button id="button-voltar" (click)="voltar()" mat-raised-button>SAIR</button>
+    <button id="button-voltar" (click)="voltar()" mat-raised-button>
+      SAIR
+    </button>
   </mat-card-actions>
 </mat-card>
