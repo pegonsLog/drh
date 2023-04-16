@@ -40,10 +40,10 @@ export class ListUserFacultativoComponent {
   }
 
   escala() {
-    this.router.navigate(['escalas/user']);
+    this.router.navigate(['escalas/user'], {
+      queryParams: { user: this.matricula },
+    });
   }
-
-  ngOnInit(): void {}
 
   onDrh() {
     this.router.navigate(['drhs/user'], {

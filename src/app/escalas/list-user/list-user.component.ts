@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { Escala } from 'src/app/_shared/models/Escala';
 import { EscalasService } from '../escalas.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-list-user',
@@ -31,10 +30,6 @@ export class ListUserEscalasComponent {
   }
   voltar() {
     this.router.navigate(['/']);
-  }
-
-  ngOnInit(): void {
-    console.log(this.list$);
   }
 
   onDrh() {

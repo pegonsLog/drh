@@ -37,7 +37,9 @@ export class ListUsersDrhsComponent {
   }
 
   escala() {
-    this.router.navigate(['escalas/user']);
+    this.router.navigate(['escalas/user'], {
+      queryParams: { user: this.matricula },
+    });
   }
 
   onTre() {
