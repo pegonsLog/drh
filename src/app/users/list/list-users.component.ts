@@ -24,7 +24,8 @@ export class ListUsersComponent implements OnDestroy {
   };
 
   displayedColumns: string[] = ['name', 'password', 'role', 'actions'];
-  role: string;
+  role: string; 
+  name: string;
 
   constructor(
     private usersService: UsersService,
@@ -34,6 +35,7 @@ export class ListUsersComponent implements OnDestroy {
   ) {
     this.role = this.route.snapshot.queryParams['role'];
     this.user = this.route.snapshot.queryParams['user'];
+    this.name = this.route.snapshot.queryParams['name'];
 
     this.list$ = this.usersService.list().pipe(
       map((users: User[]) => {
@@ -48,7 +50,7 @@ export class ListUsersComponent implements OnDestroy {
   }
   voltar() {
     this.router.navigate(['administrations'], {
-      queryParams: { role: this.role, user: this.user },
+      queryParams: { role: this.role, name: this.name, user: this.user },
     });
   }
 

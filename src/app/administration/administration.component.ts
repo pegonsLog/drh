@@ -64,6 +64,12 @@ export class AdministrationComponent {
   }
 
   onUsers() {
-    this.router.navigate(['/users/list9dkj%&kkh7898&8jjj$5']);
+    this.router.navigate(['/users/list9dkj%&kkh7898&8jjj$5'], {
+      queryParams: {
+        user: this.user,
+        name: this.name,
+        role: this.role
+      },
+    });
   }
 }
